@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
     public GameObject bubblesParticles;
     private List<int> sizeProgression = new List<int>() { 3, 7, 12, 20, 999 };
 
-
     [HideInInspector]
     public Shell currentShell;
 
@@ -81,7 +80,6 @@ public class Player : MonoBehaviour
 
     public void Move(float h, float v)
     {
-        Debug.Log("-->" + h + " " + v);
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
         if (h != 0)
         {
@@ -129,6 +127,11 @@ public class Player : MonoBehaviour
         }
         OnDie(this);
         gameObject.SetActive(false);
+    }
+
+    public void SetImmunity(bool isImmune)
+    {
+        canTakeDamage = !isImmune;
     }
 
     public void Invulnerability(float duration)
