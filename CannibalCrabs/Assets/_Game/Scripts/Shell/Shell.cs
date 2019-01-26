@@ -73,6 +73,7 @@ public abstract class Shell : MonoBehaviour
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
         OnEnterShell(this, player);
+        healthbar.UpdateFillBar(hp / maxHealh[size]);
     }
 
     public virtual void Push(Vector2 direction, float force)

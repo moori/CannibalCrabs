@@ -81,7 +81,6 @@ public class Player : MonoBehaviour
 
     public void Move(float h, float v)
     {
-        Debug.Log("-->" + h + " " + v);
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
         if (h != 0)
         {

@@ -13,6 +13,14 @@ public class GameController : MonoBehaviour
 
     private List<Player> players = new List<Player>();
     private List<Vector2> spawnPos = new List<Vector2>() { new Vector2(-17, 8), new Vector2(17, 8), new Vector2(-17, -8), new Vector2(17, -8), };
+    private FMOD_StudioEventEmitter fmodEmitter;
+    private FMOD.Studio.EventInstance bgmMusic;
+    private FMOD.Studio.ParameterInstance bgm_victoty;
+
+    private void Awake()
+    {
+        //bgmMusic = FMOD_StudioSystem
+    }
 
     private IEnumerator Start()
     {
@@ -38,7 +46,8 @@ public class GameController : MonoBehaviour
     public void SpawnShell(bool isFuderosao = false)
     {
         Shell shell = Instantiate(shellPrefabs.GetRandom());
-        shell.OnEnterShell += (s, p) => {
+        shell.OnEnterShell += (s, p) =>
+        {
             if (s.isFuderosao)
                 EndGame(p);
             else
@@ -66,6 +75,8 @@ public class GameController : MonoBehaviour
     {
         while (true)
         {
+            shellsSpawned.RemoveAll(shell => shell == null);
+
             if (shellsSpawned.Count < maxShells)
                 SpawnShell();
             yield return new WaitForSeconds(2);
