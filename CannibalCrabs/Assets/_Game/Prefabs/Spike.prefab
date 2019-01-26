@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 195433895831405176}
   - component: {fileID: 971964854081836300}
   - component: {fileID: 2711320115818484809}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3939603918145193109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5301063, y: -0.19651522, z: -0.03125}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6099758985493261755}
@@ -44,7 +44,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8739773c0af5c6046848442cd19a33a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 3
   speed: 5
 --- !u!1 &5964125248587429169
 GameObject:
@@ -94,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6099758985493261755}
   - component: {fileID: 5602628042721507441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

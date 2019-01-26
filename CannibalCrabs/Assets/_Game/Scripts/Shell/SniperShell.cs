@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SniperShell : Shell
 {
@@ -9,6 +7,6 @@ public class SniperShell : Shell
     public override void Shoot(Vector2 direction)
     {
         Spike spike = Instantiate(spikePrefab);
-        spike.Go(gameObject.transform.position, direction);
+        spike.Go(owner, direction);
     }
 }

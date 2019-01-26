@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
 
-    private Shell currentShell;
+    public Shell currentShell;
 
     private void Awake()
     {
@@ -69,4 +69,22 @@ public class Player : MonoBehaviour
         aimDirection = dir;
     }
 
+    public void TakeDamage(float damage)
+    {
+        if (currentShell != null)
+        {
+            currentShell.TakeDamage(damage);
+        }
+        else
+        {
+            Die();
+        }
+    }
+
+
+    public void Die()
+    {
+        Debug.Log("FALOWWWW BJus");
+        gameObject.SetActive(false);
+    }
 }

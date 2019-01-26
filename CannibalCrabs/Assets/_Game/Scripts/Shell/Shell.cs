@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Shell : MonoBehaviour
 {
@@ -11,6 +9,8 @@ public abstract class Shell : MonoBehaviour
 
     private float timeLastShot;
     private bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
+
+    protected Player owner;
 
     public virtual void Shoot(Vector2 direction)
     {
@@ -30,5 +30,25 @@ public abstract class Shell : MonoBehaviour
     public virtual void BreakShell()
     {
 
+    }
+
+    public virtual void EnterShell()
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            var player = collision.GetComponent<Player>();
+            if (player.currentShell == null)
+            {
+                transform.position = player.transform.position + (Vector3.up * 0.8f);
+                transform.SetParent(player.transform);
+                player.currentShell = this;
+                owner = player;
+            }
+        }
     }
 }
