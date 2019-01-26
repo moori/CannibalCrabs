@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 17f7798ecb5aac24fac8d900f8dda61e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 911719515569a7442823a6ed29a6772b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,6 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7f1a4fb54eabe41ac8397e860b67f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  hp: 0
+  size: 0
+  cooldownDuration: 0
+  granadePrefab: {fileID: 0}
+  target: {x: 0, y: 0}
 --- !u!50 &1670366780538376892
 Rigidbody2D:
   serializedVersion: 4
