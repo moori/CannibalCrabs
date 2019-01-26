@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3227880346967064395}
   m_Layer: 9
   m_Name: SniperShell
-  m_TagString: Untagged
+  m_TagString: Shell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871ebb30d0deae34a9d61a4c373de3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   hp: 10
   size: 0
   cooldownDuration: 0.8

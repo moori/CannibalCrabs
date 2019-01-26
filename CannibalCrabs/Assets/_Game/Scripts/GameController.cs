@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     public float respawnTime;
 
     private List<Player> players = new List<Player>();
-    private List<Vector2> spawnPos = new List<Vector2>() { new Vector2(-4, 4), new Vector2(4, 4), new Vector2(-4, -4), new Vector2(4, -4), };
+    private List<Vector2> spawnPos = new List<Vector2>() { new Vector2(-17, 8), new Vector2(17, 8), new Vector2(-17, -8), new Vector2(17, -8), };
 
     private IEnumerator Start()
     {
