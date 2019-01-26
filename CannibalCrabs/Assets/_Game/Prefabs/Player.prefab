@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8871958293752389844}
   - component: {fileID: 8871958293752389847}
+  - component: {fileID: 2279061939845022238}
   - component: {fileID: 8871958293752389846}
   - component: {fileID: 8871958293752389849}
   m_Layer: 8
@@ -48,6 +49,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   meatsCollected: 0
+--- !u!114 &2279061939845022238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871958293752389848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe687840f1428c4aa07eae19d06068f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerString: 
 --- !u!50 &8871958293752389846
 Rigidbody2D:
   serializedVersion: 4

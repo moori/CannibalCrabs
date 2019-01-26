@@ -30,19 +30,15 @@ public class Player : MonoBehaviour
             //levelup
         }
 
-        Debug.Log("chomp");
     }
-
-    private void FixedUpdate()
+    
+    public void Move(float h, float v)
     {
-        var h = Input.GetAxisRaw("Horizontal");
-        var v = Input.GetAxisRaw("Vertical");
-
         rb.velocity = new Vector2(h, v).normalized * speed;
-        //if (h != 0 && v != 0) {
-        //    //rb.MovePosition(new Vector2(h,v).normalized * speed);
-        //}
+        if (h != 0)
+        {
+            sprite.flipX = h < 0;
+        }
     }
-
 
 }
