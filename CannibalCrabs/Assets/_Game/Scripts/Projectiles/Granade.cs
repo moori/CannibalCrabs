@@ -3,10 +3,22 @@
 public class Granade : MonoBehaviour
 {
     public AnimationCurve spriteScaleCurve;
-    private Vector2 target;
+    public Vector2 target;
+    private bool isTraveling;
 
-    private void Start()
+    private void Awake()
+    {
+
+    }
+
+
+    public void Go(Vector2 direction)
+    {
+    }
+
+    private void FixedUpdate()
     {
         //spriteScaleCurve.Evaluate(,)
+
     }
 }
