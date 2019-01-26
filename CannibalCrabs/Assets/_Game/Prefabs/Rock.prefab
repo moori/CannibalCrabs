@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664949191191415642}
-  - component: {fileID: 2711320115818484809}
+  - component: {fileID: 5034868655164317515}
   - component: {fileID: 195433895831405176}
   - component: {fileID: 971964854081836300}
   m_Layer: 10
-  m_Name: Spike
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2711320115818484809
+--- !u!114 &5034868655164317515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,12 +43,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3939603918145193109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8739773c0af5c6046848442cd19a33a1, type: 3}
+  m_Script: {fileID: 11500000, guid: b169b085271f446498aee314a21620fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  speed: 14
-  lifetime: 0.75
+  damage: 6
+  speed: 10
 --- !u!58 &195433895831405176
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -64,7 +63,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.23
+  m_Radius: 0.35
 --- !u!50 &971964854081836300
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +153,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f89443d6f9c8284ca56b0fe71d9960d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75855072cc713204697e47ddaff0ecf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1

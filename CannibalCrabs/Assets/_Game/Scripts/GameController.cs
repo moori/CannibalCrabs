@@ -36,13 +36,11 @@ public class GameController : MonoBehaviour
     {
         Shell shell = Instantiate(shellPrefabs.GetRandom());
         shell.OnEnterShell += (s) => shellsSpawned.Remove(s);
-        shell.transform.position = Random.insideUnitCircle * Random.Range(.5f, 6);
+        shell.transform.position = Random.insideUnitCircle * Random.Range(.5f, 12);
         Debug.Log($"Min size: {players.Min(player => player.size)}, max size: {players.Max(player => player.size)}");
 
-
-
-        //shell.size = Random.Range(players.Min(player => player.size), players.Max(player => player.size));
-        shell.size = Random.Range(players.Min(player => player.size), 3);
+        shell.size = Random.Range(players.Min(player => player.size), players.Max(player => player.size));
+        //shell.size = Random.Range(players.Min(player => player.size), 3);
         shell.transform.localScale = Vector3.one * (1 + (shell.size * 0.25f));
         shellsSpawned.Add(shell);
     }

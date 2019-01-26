@@ -2,14 +2,14 @@
 
 public class SniperShell : Shell
 {
-    public Spike spikePrefab;
+    public Rock rockPrefab;
 
     public override void Shoot(Vector2 direction)
     {
         if (canShoot)
         {
-            Spike spike = Instantiate(spikePrefab);
-            spike.Go(owner, direction);
+            Rock rock = Instantiate(rockPrefab);
+            rock.Go(owner, direction);
             timeLastShot = Time.time;
         }
     }

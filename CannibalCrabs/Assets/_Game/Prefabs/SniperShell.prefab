@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8db5c68342e93f445af05a1e8d1a3479, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8556fb12a5043e145a81a6009f82e558, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  hp: 3
+  hp: 10
   size: 0
   cooldownDuration: 0.8
-  spikePrefab: {fileID: 2711320115818484809, guid: e75f413ca4470484bb17797e270990a3,
+  rockPrefab: {fileID: 5034868655164317515, guid: c0b6f9a561b62b24fafbc5ba9f5881d0,
     type: 3}
 --- !u!50 &3227880346967064394
 Rigidbody2D:
