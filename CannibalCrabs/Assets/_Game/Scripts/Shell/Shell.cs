@@ -14,7 +14,8 @@ public abstract class Shell : MonoBehaviour
     protected bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
     protected Rigidbody2D rb;
     protected Player owner;
-    protected SpriteRenderer sprite;
+    [HideInInspector]
+    public SpriteRenderer sprite;
     protected Healthbar healthbar;
 
     private bool isEquipped;
@@ -68,7 +69,6 @@ public abstract class Shell : MonoBehaviour
         transform.localScale = Vector3.one;
         player.EnterShell();
         player.currentShell = this;
-        sprite.color = player.color;
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
         OnEnterShell(this, player);

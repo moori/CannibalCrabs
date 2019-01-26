@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Color[] colors;
     [HideInInspector]
     public Color color;
+    public List<Sprite> meatSprites;
 
     public int size
     {
@@ -123,7 +124,11 @@ public class Player : MonoBehaviour
         for (int i = 0; i < meatsCollected + 2; i++)
         {
             var meat = Instantiate(meatPrefab);
-            meat.transform.position = transform.position + ((Vector3)UnityEngine.Random.insideUnitCircle * 2.5f);
+            meat.meatSprite.sprite = meatSprites.GetRandom();
+            meat.meatSprite.color = color;
+            meat.transform.localScale = transform.localScale;
+            meat.transform.position = transform.position;
+            meat.Go(transform.position + ((Vector3)UnityEngine.Random.insideUnitCircle * 2.5f));
         }
         OnDie(this);
         gameObject.SetActive(false);

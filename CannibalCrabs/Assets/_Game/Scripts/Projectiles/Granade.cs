@@ -51,12 +51,12 @@ public class Granade : Projectile
 
             player.TakeDamage(damage);
         }
-        else if (collision.CompareTag("Shell"))
-        {
-            Shell shell = collision.GetComponent<Shell>();
-            shell.Push((collision.transform.position - transform.position).normalized, damage / 2);
-            shell.TakeDamage(damage);
-        }
+        //else if (collision.CompareTag("Shell"))
+        //{
+        //    Shell shell = collision.GetComponent<Shell>();
+        //    shell.Push((collision.transform.position - transform.position).normalized, damage / 2);
+        //    shell.TakeDamage(damage);
+        //}
 
     }
 

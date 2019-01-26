@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public int maxShells = 6;
     public List<Shell> shellsSpawned;
     public float respawnTime;
+    public Sprite masterShellSprite;
 
     private List<Player> players = new List<Player>();
     private List<Vector2> spawnPos = new List<Vector2>() { new Vector2(-17, 8), new Vector2(17, 8), new Vector2(-17, -8), new Vector2(17, -8), };
@@ -66,6 +67,7 @@ public class GameController : MonoBehaviour
         else
         {
             shell.size = Shell.maxSize;
+            shell.sprite.sprite = masterShellSprite;
         }
 
         shell.transform.localScale = Vector3.one * (1 + (shell.size * 0.25f));
