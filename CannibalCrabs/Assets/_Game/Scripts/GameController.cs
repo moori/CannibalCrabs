@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public List<Shell> shellPrefabs;
     public Player playerPrefab;
     public int maxShells = 6;
-    public int shellsSpawned;
+    public List<Shell> shellsSpawned;
     public float respawnTime;
 
     private List<Player> players = new List<Player>();
@@ -35,17 +35,24 @@ public class GameController : MonoBehaviour
     public void SpawnShell()
     {
         Shell shell = Instantiate(shellPrefabs.GetRandom());
+        shell.OnEnterShell += (s) => shellsSpawned.Remove(s);
         shell.transform.position = Random.insideUnitCircle * Random.Range(.5f, 6);
-        shell.size = Random.Range(players.Min(player => player.size), players.Max(player => player.size));
+        Debug.Log($"Min size: {players.Min(player => player.size)}, max size: {players.Max(player => player.size)}");
+
+
+
+        //shell.size = Random.Range(players.Min(player => player.size), players.Max(player => player.size));
+        shell.size = Random.Range(players.Min(player => player.size), 3);
         shell.transform.localScale = Vector3.one * (1 + (shell.size * 0.25f));
-        shellsSpawned++;
+        shellsSpawned.Add(shell);
     }
 
     IEnumerator SpawnShells()
     {
-        while (shellsSpawned < maxShells)
+        while (true)
         {
-            SpawnShell();
+            if (shellsSpawned.Count < maxShells)
+                SpawnShell();
             yield return new WaitForSeconds(2);
         }
     }

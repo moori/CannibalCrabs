@@ -6,12 +6,15 @@ public abstract class Shell : MonoBehaviour
     public float hp;
     public int size;
     public float cooldownDuration;
+    public System.Action<Shell> OnEnterShell;
 
     protected float timeLastShot;
     protected bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
     protected Rigidbody2D rb;
     protected Player owner;
     protected SpriteRenderer sprite;
+
+    private bool isEquipped;
 
     public virtual void Awake()
     {
@@ -44,12 +47,20 @@ public abstract class Shell : MonoBehaviour
 
     public virtual void EnterShell(Player player)
     {
+        if (isEquipped)
+            return;
+
+        isEquipped = true;
         rb.isKinematic = true;
-        transform.position = player.transform.position + (Vector3.up * 0.8f);
-        transform.SetParent(player.transform);
+        rb.velocity = Vector2.zero;
+        transform.SetParent(player.sprite.transform);
+        transform.localPosition = new Vector3(0.93f, -0.5f, 0);
+        transform.localScale = Vector3.one;
         player.currentShell = this;
+        sprite.color = player.color;
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
+        OnEnterShell(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +75,8 @@ public abstract class Shell : MonoBehaviour
             }
             else if (owner == null)
             {
+                if (isEquipped)
+                    return;
                 rb.AddForce((transform.position - player.transform.transform.position).normalized * 2, ForceMode2D.Impulse);
             }
         }

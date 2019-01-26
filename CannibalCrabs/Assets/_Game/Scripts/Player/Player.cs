@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public Color[] colors;
+    [HideInInspector]
+    public Color color;
 
     public int size
     {
@@ -18,7 +21,8 @@ public class Player : MonoBehaviour
     public Vector2 aimDirection = Vector2.right;
 
     private Rigidbody2D rb;
-    private SpriteRenderer sprite;
+    [HideInInspector]
+    public SpriteRenderer sprite;
     private List<int> sizeProgression = new List<int>() { 3, 7, 12, 20, 999 };
 
 
@@ -28,7 +32,7 @@ public class Player : MonoBehaviour
     public System.Action<Player> OnDie = (p) => { };
 
     private bool canTakeDamage = true;
-    public bool canEat => meatsCollected < sizeProgression[currentShell.size];
+    public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : false;
 
     private void Awake()
     {
@@ -51,6 +55,8 @@ public class Player : MonoBehaviour
     public void SetPlayer(int i)
     {
         GetComponent<PlayerInput>().playerString = $"P{i + 1}_";
+        color = colors[i];
+        sprite.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(sprite => sprite.color = color);
     }
 
     public void Shoot()
@@ -68,10 +74,10 @@ public class Player : MonoBehaviour
 
     public void Move(float h, float v)
     {
-        rb.velocity = new Vector2(h, v).normalized * speed;
+        rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
         if (h != 0)
         {
-            sprite.flipX = h < 0;
+            sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x) * (h > 0 ? -1 : 1), sprite.transform.localScale.y, sprite.transform.localScale.z);
         }
     }
 

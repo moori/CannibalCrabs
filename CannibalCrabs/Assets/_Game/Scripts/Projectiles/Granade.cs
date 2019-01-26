@@ -5,6 +5,7 @@ public class Granade : Projectile
 {
     public AnimationCurve spriteScaleCurve;
     public SpriteRenderer granadeSprite;
+    public float range;
     public Vector2 target;
     private bool isTraveling;
     private Vector2 startPos;
@@ -14,6 +15,7 @@ public class Granade : Projectile
         isTraveling = true;
         rb.velocity = direction * speed;
         startPos = transform.position;
+        target = startPos + direction * range;
         StartCoroutine(TravelRoutine());
     }
 
@@ -23,8 +25,8 @@ public class Granade : Projectile
         {
             var percent = (Vector2.Distance(target, startPos) - Vector2.Distance(target, (Vector2)transform.position)) / Vector2.Distance(target, startPos);
             granadeSprite.transform.localScale = Vector2.one * (1 + spriteScaleCurve.Evaluate(percent) * .2f);
-            granadeSprite.transform.localPosition = Vector2.up * spriteScaleCurve.Evaluate(percent) * 0.9f;
-            sprite.transform.localScale = Vector2.one * (1f - spriteScaleCurve.Evaluate(percent) * 0.1f);
+            granadeSprite.transform.localPosition = Vector2.up * spriteScaleCurve.Evaluate(percent) * 3f;
+            sprite.transform.localScale = Vector2.one * (3f - spriteScaleCurve.Evaluate(percent) * 1.5f);
             if (percent >= 0.95f)
             {
                 rb.velocity = Vector2.zero;
