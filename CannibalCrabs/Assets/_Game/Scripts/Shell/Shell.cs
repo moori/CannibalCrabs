@@ -50,7 +50,6 @@ public abstract class Shell : MonoBehaviour
         player.currentShell = this;
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
-        sprite.transform.localScale = Vector3.one;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
