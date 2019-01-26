@@ -9,9 +9,10 @@ public class GranadeShell : Shell
     {
         if (canShoot)
         {
+            target = direction * 2.5f;
             var granade = Instantiate(granadePrefab);
             granade.transform.position = transform.position;
-            granade.Go(target);
+            granade.Go(owner, target);
             timeLastShot = Time.time;
         }
     }

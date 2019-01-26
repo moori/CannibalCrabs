@@ -230,6 +230,7 @@ MonoBehaviour:
     type: 3}
   maxShells: 6
   shellsSpawned: 0
+  respawnTime: 10
 --- !u!4 &1959767358
 Transform:
   m_ObjectHideFlags: 0

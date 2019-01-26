@@ -125,11 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7f1a4fb54eabe41ac8397e860b67f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  hp: 0
+  damage: 1
+  hp: 3
   size: 0
-  cooldownDuration: 0
-  granadePrefab: {fileID: 0}
+  cooldownDuration: 1
+  granadePrefab: {fileID: 7974935207289829072, guid: ce7b1eb7df342a94aa13da581414bf2b,
+    type: 3}
   target: {x: 0, y: 0}
 --- !u!50 &1670366780538376892
 Rigidbody2D:
@@ -139,14 +140,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7545000722827946591}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.6
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

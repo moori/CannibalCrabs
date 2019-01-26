@@ -9,8 +9,13 @@ public abstract class Shell : MonoBehaviour
 
     protected float timeLastShot;
     protected bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
-
+    protected Rigidbody2D rb;
     protected Player owner;
+
+    public virtual void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     public abstract void Shoot(Vector2 direction);
 
@@ -42,10 +47,15 @@ public abstract class Shell : MonoBehaviour
             var player = collision.GetComponent<Player>();
             if (player.currentShell == null)
             {
+                rb.isKinematic = true;
                 transform.position = player.transform.position + (Vector3.up * 0.8f);
                 transform.SetParent(player.transform);
                 player.currentShell = this;
                 owner = player;
+            }
+            else if (owner == null)
+            {
+                rb.AddForce((transform.position - player.transform.transform.position).normalized * 3, ForceMode2D.Impulse);
             }
         }
     }

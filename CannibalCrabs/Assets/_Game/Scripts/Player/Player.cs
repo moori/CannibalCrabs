@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Shell currentShell;
 
+    public System.Action<Player> OnDie = (p) => { };
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -84,7 +86,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     public void Die()
     {
         for (int i = 0; i < meatsCollected + 1; i++)
@@ -92,6 +93,7 @@ public class Player : MonoBehaviour
             var meat = Instantiate(meatPrefab);
             meat.transform.position = transform.position + ((Vector3)Random.insideUnitCircle * 2.5f);
         }
+        OnDie(this);
         gameObject.SetActive(false);
     }
 }
