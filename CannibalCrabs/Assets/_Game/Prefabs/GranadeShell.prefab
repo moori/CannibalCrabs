@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 9156041967553602837}
   m_Layer: 9
   m_Name: GranadeShell
-  m_TagString: Untagged
+  m_TagString: Shell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

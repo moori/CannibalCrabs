@@ -70,7 +70,14 @@ public abstract class Shell : MonoBehaviour
         OnEnterShell(this, player);
     }
 
-    private void OnCollisionEnter2D(Collider2D collision)
+    public virtual void Push(Vector2 direction, float force)
+    {
+        if (owner != null)
+            return;
+        rb.AddForce(direction * force, ForceMode2D.Impulse);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -84,7 +91,7 @@ public abstract class Shell : MonoBehaviour
             {
                 if (isEquipped)
                     return;
-                rb.AddForce((transform.position - player.transform.transform.position).normalized * 2, ForceMode2D.Impulse);
+                //rb.AddForce((transform.position - player.transform.transform.position).normalized * 8, ForceMode2D.Impulse);
             }
         }
     }
