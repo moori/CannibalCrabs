@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   meatsCollected: 0
+  meatPrefab: {fileID: 2783025131363503818, guid: 12650ddf2a10a8a43b619b76031795ce,
+    type: 3}
   aimDirection: {x: 1, y: 0}
   currentShell: {fileID: 0}
 --- !u!114 &2279061939845022238

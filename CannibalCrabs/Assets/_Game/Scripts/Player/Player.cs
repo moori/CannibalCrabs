@@ -10,12 +10,15 @@ public class Player : MonoBehaviour
     }
     public int meatsCollected;
 
+    public Meat meatPrefab;
+
     [HideInInspector]
     public Vector2 aimDirection = Vector2.right;
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
 
+    [HideInInspector]
     public Shell currentShell;
 
     private void Awake()
@@ -42,7 +45,7 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
-        currentShell.Shoot(aimDirection);
+        currentShell?.Shoot(aimDirection);
     }
 
     public void Move(float h, float v)
@@ -84,7 +87,11 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("FALOWWWW BJus");
+        for (int i = 0; i < meatsCollected + 1; i++)
+        {
+            var meat = Instantiate(meatPrefab);
+            meat.transform.position = transform.position + ((Vector3)Random.insideUnitCircle * 2.5f);
+        }
         gameObject.SetActive(false);
     }
 }

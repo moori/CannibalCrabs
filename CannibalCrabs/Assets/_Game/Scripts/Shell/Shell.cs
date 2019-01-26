@@ -7,15 +7,13 @@ public abstract class Shell : MonoBehaviour
     public int size;
     public float cooldownDuration;
 
-    private float timeLastShot;
-    private bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
+    protected float timeLastShot;
+    protected bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
 
     protected Player owner;
 
-    public virtual void Shoot(Vector2 direction)
-    {
+    public abstract void Shoot(Vector2 direction);
 
-    }
 
     public virtual void Sacrifice(Vector2 direction)
     {

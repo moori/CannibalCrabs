@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class GameController : MonoBehaviour
 {
@@ -11,13 +10,14 @@ public class GameController : MonoBehaviour
     private List<Player> players = new List<Player>();
 
 
-    private void Start()
+    private IEnumerator Start()
     {
-        StartCoroutine(SpawnMeat());
+        //StartCoroutine(SpawnMeat());
 
 
         List<Vector2> pos = new List<Vector2>() { new Vector2(-4, 4), new Vector2(4, 4), new Vector2(-4, -4), new Vector2(4, -4), };
-        for (int i = 0; i < 4; i++)
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         {
             var p = Instantiate(playerPrefab);
             p.SetPlayer(i);

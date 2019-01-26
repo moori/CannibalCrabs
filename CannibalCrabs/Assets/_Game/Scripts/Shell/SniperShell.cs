@@ -6,7 +6,11 @@ public class SniperShell : Shell
 
     public override void Shoot(Vector2 direction)
     {
-        Spike spike = Instantiate(spikePrefab);
-        spike.Go(owner, direction);
+        if (canShoot)
+        {
+            Spike spike = Instantiate(spikePrefab);
+            spike.Go(owner, direction);
+            timeLastShot = Time.time;
+        }
     }
 }
