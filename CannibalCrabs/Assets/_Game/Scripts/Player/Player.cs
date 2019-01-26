@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
         get { return 2; }
     }
     public int meatsCollected;
-
     public Meat meatPrefab;
+    public float afterHitInvulnerabilityDuration = 2;
 
     [HideInInspector]
     public Vector2 aimDirection = Vector2.right;
@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     public Shell currentShell;
 
     public System.Action<Player> OnDie = (p) => { };
+
+    private bool canTakeDamage = true;
 
     private void Awake()
     {
@@ -78,7 +80,11 @@ public class Player : MonoBehaviour
     {
         if (currentShell != null)
         {
-            currentShell.TakeDamage(damage);
+            if (canTakeDamage)
+            {
+                currentShell.TakeDamage(damage);
+                Invulnerability(afterHitInvulnerabilityDuration);
+            }
         }
         else
         {
@@ -95,5 +101,11 @@ public class Player : MonoBehaviour
         }
         OnDie(this);
         gameObject.SetActive(false);
+    }
+
+    public void Invulnerability(float duration)
+    {
+        canTakeDamage = false;
+        this.DelayedAction(duration, () => canTakeDamage = true);
     }
 }
