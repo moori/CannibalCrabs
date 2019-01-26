@@ -2,8 +2,8 @@
 
 public abstract class Shell : MonoBehaviour
 {
+    public float[] maxHealth;
     public float hp;
-    public float[] maxHealh;
     public int size;
     public float cooldownDuration;
     public System.Action<Shell, Player> OnEnterShell;
@@ -41,7 +41,7 @@ public abstract class Shell : MonoBehaviour
             return;
 
         hp -= value;
-        healthbar.UpdateFillBar(hp / maxHealh[size]);
+        healthbar.UpdateFillBar(hp / maxHealth[size]);
         if (hp <= 0)
         {
             BreakShell();
@@ -72,7 +72,7 @@ public abstract class Shell : MonoBehaviour
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
         OnEnterShell(this, player);
-        healthbar.UpdateFillBar(hp / maxHealh[size]);
+        healthbar.UpdateFillBar(hp / maxHealth[size]);
     }
 
     public virtual void Push(Vector2 direction, float force)

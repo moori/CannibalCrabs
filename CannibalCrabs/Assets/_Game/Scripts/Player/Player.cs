@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -30,11 +31,13 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Shell currentShell;
 
-    public System.Action<Player> OnDie = (p) => { };
+    public Action<Player> OnDie = (p) => { };
+    public Poison poison;
+    public bool isPoisoned { get { return poison != null; } }
 
     private bool canTakeDamage = true;
+    private bool isVisible = true;
     public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
-
 
     private void Awake()
     {
@@ -51,7 +54,6 @@ public class Player : MonoBehaviour
             //levelup
             Debug.Log("LEVEL UP -> " + size);
         }
-
     }
 
     public void SetPlayer(int i)
@@ -59,6 +61,23 @@ public class Player : MonoBehaviour
         GetComponent<PlayerInput>().playerString = $"P{i + 1}_";
         color = colors[i];
         sprite.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(sprite => sprite.color = color);
+    }
+
+    public void Infect(float duration, float totalDamage, int ticks = 10)
+    {
+        this.poison = new Poison(this, duration, totalDamage, ticks);
+    }
+
+    public void SetVisibility(bool isVisible)
+    {
+        if (this.isVisible == isVisible)
+            return;
+
+        this.isVisible = isVisible;
+        SpriteRenderer[] sprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer sprite in sprites)
+            sprite.color = !isVisible ? Color.clear : color;
     }
 
     public void EnterShell()
@@ -105,17 +124,15 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (currentShell != null)
-        {
-            if (canTakeDamage)
-            {
-                currentShell.TakeDamage(damage);
-                Invulnerability(afterHitInvulnerabilityDuration);
-            }
-        }
-        else
+        if (currentShell == null)
         {
             Die();
+        }
+        else if (canTakeDamage)
+        {
+            currentShell.TakeDamage(damage);
+            if (!isPoisoned)
+                Invulnerability(afterHitInvulnerabilityDuration);
         }
     }
 

@@ -140,4 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09eb8a1a30f49e04883f149515600718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
+  afulibateInterval: 0.2
+  afulibateTotalTicks: 10
