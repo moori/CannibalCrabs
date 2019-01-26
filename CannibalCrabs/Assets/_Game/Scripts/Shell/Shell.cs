@@ -50,7 +50,8 @@ public abstract class Shell : MonoBehaviour
 
     public virtual void BreakShell()
     {
-        owner.currentShell = null;
+        //if (owner != null)
+        //    owner.currentShell = null;
         Destroy(gameObject);
     }
 
@@ -61,6 +62,7 @@ public abstract class Shell : MonoBehaviour
 
         isEquipped = true;
         rb.isKinematic = true;
+        rb.GetComponent<Collider2D>().enabled = false;
         rb.velocity = Vector2.zero;
         transform.SetParent(player.sprite.transform);
         transform.localPosition = new Vector3(0.93f, -0.5f, 0);
@@ -70,33 +72,26 @@ public abstract class Shell : MonoBehaviour
         sprite.color = player.color;
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
-        hp += size * hp * 0.25f;
         OnEnterShell(this, player);
     }
 
     public virtual void Push(Vector2 direction, float force)
     {
-        if (owner != null)
+        if (owner != null || isFuderosao)
             return;
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
-
-    private void OnCollisionEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            var player = collision.GetComponent<Player>();
+            var player = collision.gameObject.GetComponent<Player>();
             if (player.currentShell == null)
             {
                 if (player.size == size)
                     EnterShell(player);
             }
-            else if (owner == null)
-            {
-                if (isEquipped)
-                    return;
-                //rb.AddForce((transform.position - player.transform.transform.position).normalized * 8, ForceMode2D.Impulse);
-            }
         }
     }
+
 }
