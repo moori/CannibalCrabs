@@ -3,6 +3,7 @@
 public abstract class Shell : MonoBehaviour
 {
     public float hp;
+    public float[] maxHealh;
     public int size;
     public float cooldownDuration;
     public System.Action<Shell> OnEnterShell;
@@ -12,6 +13,7 @@ public abstract class Shell : MonoBehaviour
     protected Rigidbody2D rb;
     protected Player owner;
     protected SpriteRenderer sprite;
+    protected Healthbar healthbar;
 
     private bool isEquipped;
 
@@ -20,6 +22,7 @@ public abstract class Shell : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        healthbar = GetComponentInChildren<Healthbar>();
     }
 
     public abstract void Shoot(Vector2 direction);
@@ -33,6 +36,7 @@ public abstract class Shell : MonoBehaviour
     public virtual void TakeDamage(float value)
     {
         hp -= value;
+        healthbar.UpdateFillBar(hp / maxHealh[size]);
         if (hp <= 0)
         {
             BreakShell();
