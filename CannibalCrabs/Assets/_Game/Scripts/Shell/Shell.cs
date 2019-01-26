@@ -7,6 +7,10 @@ public abstract class Shell : MonoBehaviour
     public float damage;
     public float hp;
     public int size;
+    public float cooldownDuration;
+
+    private float timeLastShot;
+    private bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
 
     public virtual void Shoot(Vector2 direction)
     {

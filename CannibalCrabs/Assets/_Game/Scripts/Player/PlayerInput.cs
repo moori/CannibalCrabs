@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public string playerString ="";
+    public string playerString;
 
     private Player player;
 

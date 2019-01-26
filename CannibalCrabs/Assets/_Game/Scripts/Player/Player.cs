@@ -31,7 +31,12 @@ public class Player : MonoBehaviour
         }
 
     }
-    
+
+    internal void SetPlayer(int i)
+    {
+        GetComponent<PlayerInput>().playerString = $"P{i + 1}_";
+    }
+
     public void Move(float h, float v)
     {
         rb.velocity = new Vector2(h, v).normalized * speed;
