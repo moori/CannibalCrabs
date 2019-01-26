@@ -49,6 +49,8 @@ public abstract class Shell : MonoBehaviour
 
     public virtual void BreakShell()
     {
+        if (owner.currentShell)
+            owner.currentShell = null;
         Destroy(gameObject);
     }
 
