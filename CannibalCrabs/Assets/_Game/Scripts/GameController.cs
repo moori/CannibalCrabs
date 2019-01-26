@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        //for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        for (int i = 0; i < 4; i++)
         {
             var player = Instantiate(playerPrefab);
             player.SetPlayer(i);
