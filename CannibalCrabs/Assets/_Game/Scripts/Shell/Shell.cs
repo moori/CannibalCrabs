@@ -77,7 +77,7 @@ public abstract class Shell : MonoBehaviour
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
