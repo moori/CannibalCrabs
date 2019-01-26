@@ -27,22 +27,39 @@ public class GameController : MonoBehaviour
             player.OnDie += OnPlayerDeath;
         }
 
+        SpawnShell(true);
+
         for (int i = 0; i < maxShells; i++)
             SpawnShell();
+
         StartCoroutine(SpawnShells());
     }
 
-    public void SpawnShell()
+    public void SpawnShell(bool isFuderosao = false)
     {
         Shell shell = Instantiate(shellPrefabs.GetRandom());
-        shell.OnEnterShell += (s) => shellsSpawned.Remove(s);
-        shell.transform.position = Random.insideUnitCircle * Random.Range(.5f, 12);
-        //Debug.Log($"Min size: {players.Min(player => player.size)}, max size: {players.Max(player => player.size)}");
+        shell.OnEnterShell += (s, p) => {
+            if (s.isFuderosao)
+                EndGame(p);
+            else
+                shellsSpawned.Remove(s);
+        };
+        shell.transform.position = new Vector2(Random.Range(-18f, 18f), Random.Range(-8f, 8f));
 
-        shell.size = Random.Range(players.Min(player => player.size), players.Max(player => player.size));
-        //shell.size = Random.Range(players.Min(player => player.size), 3);
+        if (!isFuderosao)
+        {
+            int min = players.Min(player => player.size), max = players.Max(player => player.size);
+            if (max < Shell.maxSize)
+                max++;
+            shell.size = Random.Range(min, max + 1);
+            shellsSpawned.Add(shell);
+        }
+        else
+        {
+            shell.size = Shell.maxSize;
+        }
+
         shell.transform.localScale = Vector3.one * (1 + (shell.size * 0.25f));
-        shellsSpawned.Add(shell);
     }
 
     IEnumerator SpawnShells()
@@ -59,6 +76,7 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(PlayerRespawnRoutine(player));
     }
+
     IEnumerator PlayerRespawnRoutine(Player player)
     {
         yield return new WaitForSeconds(respawnTime);
@@ -67,4 +85,8 @@ public class GameController : MonoBehaviour
         player.gameObject.SetActive(true);
     }
 
+    public void EndGame(Player winner)
+    {
+        Debug.Log("temos um grande vencedor " + winner.name);
+    }
 }

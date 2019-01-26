@@ -6,7 +6,9 @@ public abstract class Shell : MonoBehaviour
     public float[] maxHealh;
     public int size;
     public float cooldownDuration;
-    public System.Action<Shell> OnEnterShell;
+    public System.Action<Shell, Player> OnEnterShell;
+    public bool isFuderosao { get { return size >= maxSize; } }
+    public static readonly int maxSize = 4;
 
     protected float timeLastShot;
     protected bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
@@ -35,6 +37,9 @@ public abstract class Shell : MonoBehaviour
 
     public virtual void TakeDamage(float value)
     {
+        if (isFuderosao)
+            return;
+
         hp -= value;
         healthbar.UpdateFillBar(hp / maxHealh[size]);
         if (hp <= 0)
@@ -66,7 +71,7 @@ public abstract class Shell : MonoBehaviour
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
         hp += size * hp * 0.25f;
-        OnEnterShell(this);
+        OnEnterShell(this, player);
     }
 
     public virtual void Push(Vector2 direction, float force)
@@ -76,7 +81,7 @@ public abstract class Shell : MonoBehaviour
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
