@@ -2,7 +2,6 @@
 
 public abstract class Shell : MonoBehaviour
 {
-    public float damage;
     public float hp;
     public int size;
     public float cooldownDuration;
@@ -15,6 +14,7 @@ public abstract class Shell : MonoBehaviour
     protected SpriteRenderer sprite;
 
     private bool isEquipped;
+
 
     public virtual void Awake()
     {
@@ -56,10 +56,12 @@ public abstract class Shell : MonoBehaviour
         transform.SetParent(player.sprite.transform);
         transform.localPosition = new Vector3(0.93f, -0.5f, 0);
         transform.localScale = Vector3.one;
+        player.EnterShell();
         player.currentShell = this;
         sprite.color = player.color;
         owner = player;
         player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
+        hp += size * hp * 0.25f;
         OnEnterShell(this);
     }
 

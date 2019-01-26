@@ -8,6 +8,7 @@ public class Spike : Projectile
         transform.position = (Vector2)owner.transform.position + direction * 0.5f;
         rb.velocity = direction * speed;
         sprite.transform.right = direction;
+        damage += owner.size * 0.25f;
         this.owner = owner;
         Destroy(gameObject, lifetime);
     }

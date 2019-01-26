@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     [HideInInspector]
     public SpriteRenderer sprite;
+    public GameObject bubblesParticles;
     private List<int> sizeProgression = new List<int>() { 3, 7, 12, 20, 999 };
 
 
@@ -32,7 +33,8 @@ public class Player : MonoBehaviour
     public System.Action<Player> OnDie = (p) => { };
 
     private bool canTakeDamage = true;
-    public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : false;
+    public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
+
 
     private void Awake()
     {
@@ -57,6 +59,11 @@ public class Player : MonoBehaviour
         GetComponent<PlayerInput>().playerString = $"P{i + 1}_";
         color = colors[i];
         sprite.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(sprite => sprite.color = color);
+    }
+
+    public void EnterShell()
+    {
+        bubblesParticles.SetActive(true);
     }
 
     public void Shoot()
@@ -117,7 +124,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < meatsCollected + 2; i++)
         {
             var meat = Instantiate(meatPrefab);
-            meat.transform.position = transform.position + ((Vector3)Random.insideUnitCircle * 2.5f);
+            meat.transform.position = transform.position + ((Vector3)UnityEngine.Random.insideUnitCircle * 2.5f);
         }
         OnDie(this);
         gameObject.SetActive(false);
@@ -128,4 +135,5 @@ public class Player : MonoBehaviour
         canTakeDamage = false;
         this.DelayedAction(duration, () => canTakeDamage = true);
     }
+
 }

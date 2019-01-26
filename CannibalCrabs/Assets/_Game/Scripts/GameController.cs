@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
         Shell shell = Instantiate(shellPrefabs.GetRandom());
         shell.OnEnterShell += (s) => shellsSpawned.Remove(s);
         shell.transform.position = Random.insideUnitCircle * Random.Range(.5f, 12);
-        Debug.Log($"Min size: {players.Min(player => player.size)}, max size: {players.Max(player => player.size)}");
+        //Debug.Log($"Min size: {players.Min(player => player.size)}, max size: {players.Max(player => player.size)}");
 
         shell.size = Random.Range(players.Min(player => player.size), players.Max(player => player.size));
         //shell.size = Random.Range(players.Min(player => player.size), 3);

@@ -16,6 +16,7 @@ public class Granade : Projectile
         rb.velocity = direction * speed;
         startPos = transform.position;
         target = startPos + direction * range;
+        damage += owner.size * 0.25f;
         StartCoroutine(TravelRoutine());
     }
 
