@@ -19,7 +19,6 @@ public abstract class Shell : MonoBehaviour
 
     private bool isEquipped;
 
-
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,8 +49,6 @@ public abstract class Shell : MonoBehaviour
 
     public virtual void BreakShell()
     {
-        //if (owner != null)
-        //    owner.currentShell = null;
         Destroy(gameObject);
     }
 
