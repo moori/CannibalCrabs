@@ -1,28 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NinjaBomb : MonoBehaviour
 {
-    public float damage = 10;
+    public float duration = 2f;
 
-    private Player protectedPlayer;
-    private List<Player> playersInside = new List<Player>();
+    private Player ninjaPlayer;
 
-    public void Activate(Player protectedPlayer, Vector2 position)
+    public void Activate(Player ninjaPlayer, Vector2 position)
     {
-        this.protectedPlayer = protectedPlayer;
+        this.ninjaPlayer = ninjaPlayer;
         transform.position = position;
-        this.DelayedAction(2, () => Explode());
+        this.DelayedAction(duration, () => Destroy(gameObject));
     }
 
-    private void Explode()
+    private void Infect(Player player)
     {
-        protectedPlayer.SetImmunity(false);
-        foreach (Player player in playersInside)
-            player.TakeDamage(damage);
-
-        Destroy(gameObject);
+        if (!player.isPoisoned)
+            player.Infect(1f, 5);
+        else if (player.poison.isHealing)
+            player.poison.StopHealing();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,10 +28,10 @@ public class NinjaBomb : MonoBehaviour
 
         Player player = collision.gameObject.GetComponent<Player>();
 
-        if (player == protectedPlayer)
-            protectedPlayer.SetImmunity(true);
-        else if (!playersInside.Contains(player))
-            playersInside.Add(player);
+        if (player == ninjaPlayer)
+            ninjaPlayer.SetVisibility(false);
+        else
+            Infect(player);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -45,9 +41,9 @@ public class NinjaBomb : MonoBehaviour
 
         Player player = collision.gameObject.GetComponent<Player>();
 
-        if (player == protectedPlayer)
-            protectedPlayer.SetImmunity(false);
-        else if (playersInside.Contains(player))
-            playersInside.Remove(player);
+        if (player == ninjaPlayer)
+            ninjaPlayer.SetVisibility(true);
+        else if (player.isPoisoned)
+            player.poison.BeginHealing();
     }
 }
