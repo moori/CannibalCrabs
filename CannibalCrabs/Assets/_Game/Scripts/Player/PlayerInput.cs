@@ -20,12 +20,17 @@ public class PlayerInput : MonoBehaviour
         var aim_v = Input.GetAxisRaw(playerString + "RightVertical");
 
         var shoot = Input.GetAxis(playerString + "Shoot") > 0f || Input.GetButtonDown(playerString + "Shoot");
+        var sacrifice = Input.GetButtonDown(playerString + "Sacrifice");
 
         player.Move(h, v);
         player.Aim(h, v, aim_h, aim_v);
         if (shoot)
         {
             player.Shoot();
+        }
+        if (sacrifice)
+        {
+            player.Sacrifice();
         }
     }
 }

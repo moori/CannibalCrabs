@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Meat : MonoBehaviour
 {
@@ -8,8 +6,12 @@ public class Meat : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().Eat();
-            Destroy(gameObject);
+            var player = collision.gameObject.GetComponent<Player>();
+            if (player.canEat)
+            {
+                player.Eat();
+                Destroy(gameObject);
+            }
         }
     }
 }

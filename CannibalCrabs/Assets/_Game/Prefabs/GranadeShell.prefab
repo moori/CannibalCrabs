@@ -131,7 +131,6 @@ MonoBehaviour:
   cooldownDuration: 1
   granadePrefab: {fileID: 7974935207289829072, guid: ce7b1eb7df342a94aa13da581414bf2b,
     type: 3}
-  target: {x: 0, y: 0}
 --- !u!50 &1670366780538376892
 Rigidbody2D:
   serializedVersion: 4
@@ -152,7 +151,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &9156041967553602837
 CircleCollider2D:
   m_ObjectHideFlags: 0

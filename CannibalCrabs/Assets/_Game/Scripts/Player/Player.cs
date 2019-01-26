@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -6,7 +8,7 @@ public class Player : MonoBehaviour
 
     public int size
     {
-        get { return 2; }
+        get { return sizeProgression.IndexOf(sizeProgression.First(value => meatsCollected < value)); }
     }
     public int meatsCollected;
     public Meat meatPrefab;
@@ -17,6 +19,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
+    private List<int> sizeProgression = new List<int>() { 3, 7, 12, 20, 999 };
+
 
     [HideInInspector]
     public Shell currentShell;
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
     public System.Action<Player> OnDie = (p) => { };
 
     private bool canTakeDamage = true;
+    public bool canEat => meatsCollected < sizeProgression[currentShell.size];
 
     private void Awake()
     {
@@ -38,6 +43,7 @@ public class Player : MonoBehaviour
         if (size > initSize)
         {
             //levelup
+            Debug.Log("LEVEL UP -> " + size);
         }
 
     }
@@ -50,6 +56,14 @@ public class Player : MonoBehaviour
     public void Shoot()
     {
         currentShell?.Shoot(aimDirection);
+    }
+
+    public void Sacrifice()
+    {
+        if (currentShell != null)
+        {
+            currentShell.Sacrifice(aimDirection);
+        }
     }
 
     public void Move(float h, float v)
@@ -94,7 +108,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        for (int i = 0; i < meatsCollected + 1; i++)
+        for (int i = 0; i < meatsCollected + 2; i++)
         {
             var meat = Instantiate(meatPrefab);
             meat.transform.position = transform.position + ((Vector3)Random.insideUnitCircle * 2.5f);

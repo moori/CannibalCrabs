@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -15,11 +16,6 @@ public class GameController : MonoBehaviour
 
     private IEnumerator Start()
     {
-        for (int i = 0; i < maxShells; i++)
-            SpawnShell();
-
-        StartCoroutine(SpawnShells());
-
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         {
@@ -29,12 +25,18 @@ public class GameController : MonoBehaviour
             players.Add(player);
             player.OnDie += OnPlayerDeath;
         }
+
+        for (int i = 0; i < maxShells; i++)
+            SpawnShell();
+        StartCoroutine(SpawnShells());
     }
 
     public void SpawnShell()
     {
         Shell shell = Instantiate(shellPrefabs.GetRandom());
         shell.transform.position = Random.insideUnitCircle * Random.Range(.5f, 6);
+        shell.size = Random.Range(players.Min(player => player.size), players.Max(player => player.size));
+        shell.transform.localScale = Vector3.one * (1 + (shell.size * 0.25f));
         shellsSpawned++;
     }
 

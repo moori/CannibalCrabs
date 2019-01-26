@@ -13,7 +13,6 @@ public class GranadeShell : Shell
             granade.target = (Vector2)transform.position + (direction * 4.5f);
             granade.Go(owner, direction);
             timeLastShot = Time.time;
-            Debug.Log("shoot");
         }
     }
 }
