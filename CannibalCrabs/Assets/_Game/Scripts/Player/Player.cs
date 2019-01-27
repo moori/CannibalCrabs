@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public SpriteRenderer sprite;
+    public List<SpriteRenderer> colorSprites;
 
     [HideInInspector]
     public Shell currentShell;
@@ -90,9 +91,8 @@ public class Player : MonoBehaviour
             return;
 
         this.isVisible = isVisible;
-        SpriteRenderer[] sprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
 
-        foreach (SpriteRenderer sprite in sprites)
+        foreach (SpriteRenderer sprite in colorSprites)
             sprite.color = !isVisible ? Color.clear : color;
     }
 
