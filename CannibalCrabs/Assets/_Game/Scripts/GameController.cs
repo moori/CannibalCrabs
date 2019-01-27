@@ -69,10 +69,35 @@ public class GameController : MonoBehaviour
 
         if (!isFuderosao)
         {
-            int min = players.Min(player => player.size), max = players.Max(player => player.size);
-            if (max < Shell.maxSize)
-                max++;
-            shell.size = Random.Range(min, max + 1);
+            int min = 0, max = 0, forceSize = -1;
+
+            foreach (Player player in players)
+            {
+                if (!shellsSpawned.Any(ss => ss.size == player.size))
+                {
+                    forceSize = player.size;
+                    break;
+                }
+
+                if (player.size < min)
+                    min = player.size;
+
+                if (player.size > max)
+                    max = player.size;
+            }
+
+            if (forceSize >= 0)
+            {
+                shell.size = forceSize;
+            }
+            else
+            {
+                if (max < Shell.maxSize && !shellsSpawned.Any(ss => ss.size == max + 1))
+                    max++;
+
+                shell.size = Random.Range(min, max + 1);
+            }
+            
             shellsSpawned.Add(shell);
         }
         else
@@ -88,6 +113,11 @@ public class GameController : MonoBehaviour
         while (true)
         {
             shellsSpawned.RemoveAll(shell => shell == null);
+            int shorterCrabSize = players.Min(player => player.size);
+            IEnumerable<Shell> uselessShells = shellsSpawned.Where(ss => ss.size < shorterCrabSize);
+
+            foreach (Shell uselessShell in uselessShells)
+                uselessShell.BreakShell();
 
             if (shellsSpawned.Count < maxShells)
                 SpawnShell();
@@ -130,7 +160,6 @@ public class GameController : MonoBehaviour
 
     public void EndGame(Player winner)
     {
-        Debug.Log("temos um grande vencedor " + winner.name);
         bgm_victoty.setValue(1f); //calculateEnemyDistance()is your method that will return the correct distance to be passed to FMOD)
         var cam = FindObjectOfType<Camera>();
         cam.DOOrthoSize(8, 1).SetEase(Ease.InOutQuad);

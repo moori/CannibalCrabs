@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public Action<Player> OnDie = (p) => { };
     public Poison poison;
     public bool isPoisoned { get { return poison != null; } }
+    public bool hasShell { get { return currentShell != null; } }
     private bool canTakeDamage = true;
     private bool isVisible = true;
     public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
