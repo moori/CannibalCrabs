@@ -126,14 +126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871ebb30d0deae34a9d61a4c373de3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  maxHealh:
+  maxHealth:
   - 7
   - 14
   - 18
   - 99
+  hp: 10
   size: 0
   cooldownDuration: 0.8
+  sprite: {fileID: 0}
   rockPrefab: {fileID: 5034868655164317515, guid: c0b6f9a561b62b24fafbc5ba9f5881d0,
     type: 3}
   ninjaBombPrefab: {fileID: 7324425442683843191, guid: bc6c7bff94474de49bba4cf64741f868,

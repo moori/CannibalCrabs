@@ -17,6 +17,7 @@ public class Granade : Projectile
         startPos = transform.position;
         target = startPos + direction * range;
         damage += owner.size * 0.25f;
+        sprite.color = owner.color;
         StartCoroutine(TravelRoutine());
     }
 

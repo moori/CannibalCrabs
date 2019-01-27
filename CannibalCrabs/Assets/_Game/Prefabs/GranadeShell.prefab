@@ -126,14 +126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7f1a4fb54eabe41ac8397e860b67f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  maxHealh:
+  maxHealth:
   - 6
   - 10
   - 15
   - 99
+  hp: 10
   size: 0
   cooldownDuration: 1
+  sprite: {fileID: 0}
   granadePrefab: {fileID: 7974935207289829072, guid: ce7b1eb7df342a94aa13da581414bf2b,
     type: 3}
   shelterBombPrefab: {fileID: 8191829841935420666, guid: 15e32d9d03344604291db4ee2c090ac7,

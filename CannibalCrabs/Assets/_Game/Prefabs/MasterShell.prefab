@@ -126,14 +126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98cdb0b57a54a4aa501de999d0d655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  maxHealh:
-  - 4
-  - 8
-  - 14
+  maxHealth:
   - 99
+  - 99
+  - 99
+  - 99
+  hp: 10
   size: 0
   cooldownDuration: 0.3
+  sprite: {fileID: 0}
   spikePrefab: {fileID: 2711320115818484809, guid: e75f413ca4470484bb17797e270990a3,
     type: 3}
 --- !u!50 &3227880346967064394

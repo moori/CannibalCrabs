@@ -262,12 +262,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98cdb0b57a54a4aa501de999d0d655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  maxHealh:
+  maxHealth:
   - 4
   - 8
   - 14
   - 99
+  hp: 10
   size: 0
   cooldownDuration: 0.3
   sprite: {fileID: 0}
