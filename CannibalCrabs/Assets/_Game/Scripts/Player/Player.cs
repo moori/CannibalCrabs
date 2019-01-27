@@ -5,37 +5,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
-    public Color[] colors;
     [HideInInspector]
     public Color color;
-    public List<Sprite> meatSprites;
-
-    public int size
-    {
-        get { return sizeProgression.IndexOf(sizeProgression.First(value => meatsCollected < value)); }
-    }
-    public int meatsCollected;
-    public Meat meatPrefab;
-    public float afterHitInvulnerabilityDuration = 2;
 
     [HideInInspector]
     public Vector2 aimDirection = Vector2.right;
 
-    private Rigidbody2D rb;
     [HideInInspector]
     public SpriteRenderer sprite;
-    public GameObject bubblesParticles;
-    private List<int> sizeProgression = new List<int>() { 3, 7, 12, 20, 999 };
 
     [HideInInspector]
     public Shell currentShell;
 
+    public float speed;
+    public Color[] colors;
+    public List<Sprite> meatSprites;
+    public int size => sizeProgression.IndexOf(sizeProgression.First(value => meatsCollected < value));
+    public int meatsCollected;
+    public Meat meatPrefab;
+    public float afterHitInvulnerabilityDuration = 2;
+    private Rigidbody2D rb;
+    public GameObject bubblesParticles;
+    private List<int> sizeProgression = new List<int>() { 3, 7, 12, 20, 999 };
     public Action<Player> OnDie = (p) => { };
     public Poison poison;
     public bool isPoisoned { get { return poison != null; } }
-
     private bool canTakeDamage = true;
+    private bool isDisabled = false;
     private bool isVisible = true;
     public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
 
@@ -47,7 +43,10 @@ public class Player : MonoBehaviour
 
     public void Eat()
     {
-        var initSize = size;
+        if (isDisabled)
+            return;
+
+        int initSize = size;
         meatsCollected++;
         if (size > initSize)
         {
@@ -63,9 +62,26 @@ public class Player : MonoBehaviour
         sprite.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(sprite => sprite.color = color);
     }
 
+    public void Disable()
+    {
+        isDisabled = true;
+        SetVisibility(false);
+    }
+
+    public void Enable(Vector2? position = null)
+    {
+        isDisabled = false;
+        SetVisibility(true);
+        if (position != null)
+            transform.position = position.Value;
+    }
+
     public void Infect(float duration, float totalDamage, int ticks = 10)
     {
-        this.poison = new Poison(this, duration, totalDamage, ticks);
+        if (isDisabled)
+            return;
+
+        poison = new Poison(this, duration, totalDamage, ticks);
     }
 
     public void SetVisibility(bool isVisible)
@@ -82,24 +98,31 @@ public class Player : MonoBehaviour
 
     public void EnterShell()
     {
+        if (isDisabled)
+            return;
+
         bubblesParticles.SetActive(true);
     }
 
     public void Shoot()
     {
+        if (isDisabled)
+            return;
+
         currentShell?.Shoot(aimDirection);
     }
 
     public void Sacrifice()
     {
-        if (currentShell != null)
-        {
+        if (currentShell != null && !isDisabled)
             currentShell.Sacrifice(aimDirection);
-        }
     }
 
     public void Move(float h, float v)
     {
+        if (isDisabled)
+            return;
+
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
         if (h != 0)
         {
@@ -124,6 +147,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isDisabled)
+            return;
+
         if (currentShell == null)
         {
             Die();

@@ -81,6 +81,7 @@ public abstract class Shell : MonoBehaviour
             return;
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -93,5 +94,4 @@ public abstract class Shell : MonoBehaviour
             }
         }
     }
-
 }
