@@ -16,6 +16,7 @@ public class Dash : MonoBehaviour
         SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
         rigidBody.velocity = direction * speed;
         sprite.transform.up = direction;
+        transform.localScale = dasher.transform.localScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
