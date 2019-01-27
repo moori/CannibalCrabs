@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     {
         GetComponent<PlayerInput>().playerString = $"P{i + 1}_";
         color = colors[i];
-        sprite.GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(sprite => sprite.color = color);
+        colorSprites.ForEach(sprite => sprite.color = color);
     }
 
     public void Disable()
