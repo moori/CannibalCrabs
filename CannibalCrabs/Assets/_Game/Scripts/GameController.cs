@@ -125,6 +125,7 @@ public class GameController : MonoBehaviour
         var index = players.IndexOf(player);
         player.transform.position = spawnPos[index];
         player.gameObject.SetActive(true);
+        player.SetVisibility(true);
     }
 
     public void EndGame(Player winner)

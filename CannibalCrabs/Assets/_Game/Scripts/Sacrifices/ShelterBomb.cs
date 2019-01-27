@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShelterBomb : MonoBehaviour
@@ -9,10 +8,15 @@ public class ShelterBomb : MonoBehaviour
     private Player protectedPlayer;
     private List<Player> playersInside = new List<Player>();
 
+    public GameObject shieldPart;
+    public GameObject explosionPart;
+
     public void Activate(Player protectedPlayer, Vector2 position)
     {
         this.protectedPlayer = protectedPlayer;
         transform.position = position;
+        shieldPart.SetActive(true);
+        shieldPart.transform.SetParent(null);
         this.DelayedAction(2, () => Explode());
     }
 
@@ -21,6 +25,8 @@ public class ShelterBomb : MonoBehaviour
         protectedPlayer.SetImmunity(false);
         foreach (Player player in playersInside)
             player.TakeDamage(damage);
+        explosionPart.SetActive(true);
+        explosionPart.transform.SetParent(null);
 
         Destroy(gameObject);
     }

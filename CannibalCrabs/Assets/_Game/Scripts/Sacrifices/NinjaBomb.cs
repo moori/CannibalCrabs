@@ -5,12 +5,15 @@ public class NinjaBomb : MonoBehaviour
     public float duration = 2f;
 
     private Player ninjaPlayer;
+    public GameObject smokePart;
 
     public void Activate(Player ninjaPlayer, Vector2 position)
     {
         this.ninjaPlayer = ninjaPlayer;
         transform.position = position;
         this.DelayedAction(duration, () => Destroy(gameObject));
+
+        smokePart.transform.SetParent(null);
     }
 
     private void Infect(Player player)
