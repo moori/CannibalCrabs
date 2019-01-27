@@ -18,7 +18,7 @@ public class Dash : MonoBehaviour
         sprite.transform.up = direction;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -33,6 +33,5 @@ public class Dash : MonoBehaviour
         dasher.gameObject.SetActive(true);
         dasher.transform.position = transform.position;
         Destroy(gameObject);
-        Debug.Log("giff me parede", collision.gameObject);
     }
 }
