@@ -6645,13 +6645,14 @@ MonoBehaviour:
     type: 3}
   maxShells: 6
   shellsSpawned: []
-  respawnTime: 10
+  respawnTime: 4
   masterShellSprite: {fileID: 21300000, guid: 4e0aaa381dad15844b80c8e9ddde2a11, type: 3}
   deathPartPrefab: {fileID: 198247871303120836, guid: c12ffb9bded0b5f469573850a7ed5410,
     type: 3}
   shellSpawnMask:
     serializedVersion: 2
     m_Bits: 6912
+  winnerText: {fileID: 0}
 --- !u!4 &1959767358
 Transform:
   m_ObjectHideFlags: 0
