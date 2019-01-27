@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   speed: 7
+  hit_sfx_event: event:/SndFx/bomber_basic_atack
   spriteScaleCurve:
     serializedVersion: 2
     m_Curve:

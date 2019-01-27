@@ -1907,7 +1907,7 @@ MonoBehaviour:
   meatsCollected: 0
   meatPrefab: {fileID: 2783025131363503818, guid: 12650ddf2a10a8a43b619b76031795ce,
     type: 3}
-  afterHitInvulnerabilityDuration: 2
+  afterHitInvulnerabilityDuration: 0.25
   bubblesParticles: {fileID: 9190352815075579532}
 --- !u!114 &2279061939845022238
 MonoBehaviour:

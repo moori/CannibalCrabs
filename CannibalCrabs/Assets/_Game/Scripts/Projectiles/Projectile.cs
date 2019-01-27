@@ -9,10 +9,16 @@ public class Projectile : MonoBehaviour
     protected Rigidbody2D rb;
     protected SpriteRenderer sprite;
 
+
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance hitEventEmitter;
+    public string hit_sfx_event;
+
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        hitEventEmitter = FMODUnity.RuntimeManager.CreateInstance(hit_sfx_event);
     }
 
     public virtual void Go(Player owner, Vector2 direction)

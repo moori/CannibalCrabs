@@ -5,15 +5,6 @@ public class MachineGunShell : Shell
     public Spike spikePrefab;
     public Dash dashPrefab;
 
-    [FMODUnity.EventRef]
-    public FMOD.Studio.EventInstance shootEventEmitter;
-
-    public override void Awake()
-    {
-        base.Awake();
-        shootEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/spiker_basic");
-    }
-
     public override void Shoot(Vector2 direction)
     {
         if (!canShoot)

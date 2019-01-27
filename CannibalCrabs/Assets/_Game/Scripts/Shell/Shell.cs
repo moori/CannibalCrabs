@@ -19,12 +19,21 @@ public abstract class Shell : MonoBehaviour
     protected Healthbar healthbar;
 
     private bool isEquipped;
+    public string shoot_sfx_event;
+
+
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance shootEventEmitter;
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance crackShellEventEmitter;
 
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         healthbar = GetComponentInChildren<Healthbar>();
+        shootEventEmitter = FMODUnity.RuntimeManager.CreateInstance(shoot_sfx_event);
+        crackShellEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/shell_crack");
     }
 
     public abstract void Shoot(Vector2 direction);

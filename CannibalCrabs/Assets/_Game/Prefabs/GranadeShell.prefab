@@ -135,6 +135,7 @@ MonoBehaviour:
   size: 0
   cooldownDuration: 1
   sprite: {fileID: 0}
+  shoot_sfx_event: event:/SndFx/bomber_basic_fall
   granadePrefab: {fileID: 7974935207289829072, guid: ce7b1eb7df342a94aa13da581414bf2b,
     type: 3}
   shelterBombPrefab: {fileID: 8191829841935420666, guid: 15e32d9d03344604291db4ee2c090ac7,

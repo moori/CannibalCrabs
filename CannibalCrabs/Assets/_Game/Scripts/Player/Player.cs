@@ -34,10 +34,29 @@ public class Player : MonoBehaviour
     private bool isVisible = true;
     public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
     private Animator animator;
+
+
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance deathEventEmitter;
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance eatEventEmitter;
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance levelUpEventEmitter;
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance enterShellEventEmitter;
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance exitShellEventEmitter;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        deathEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_death");
+        eatEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_collect");
+        levelUpEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_level_up");
+        enterShellEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_shell_on");
+        exitShellEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_shell_off");
     }
 
     public void Eat()
@@ -48,7 +67,13 @@ public class Player : MonoBehaviour
         {
             //levelup
             Debug.Log("LEVEL UP -> " + size);
+            if (size == 4)
+            {
+                levelUpEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_level_final");
+            }
+            levelUpEventEmitter.start();
         }
+        eatEventEmitter.start();
     }
 
     public void SetPlayer(int i)
@@ -89,6 +114,7 @@ public class Player : MonoBehaviour
     public void EnterShell()
     {
         bubblesParticles.SetActive(true);
+        enterShellEventEmitter.start();
     }
 
     public void Shoot()
@@ -100,12 +126,15 @@ public class Player : MonoBehaviour
     {
         if (currentShell != null)
             currentShell.Sacrifice(aimDirection);
+
+        exitShellEventEmitter.start();
     }
 
     public void Move(float h, float v)
     {
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
         animator.SetBool("walking", rb.velocity.magnitude > 0.1f);
+        animator.speed = (rb.velocity.magnitude / 12f);
         if (h != 0)
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x) * (h > 0 ? -1 : 1), sprite.transform.localScale.y, sprite.transform.localScale.z);
@@ -153,6 +182,7 @@ public class Player : MonoBehaviour
             meat.Go(transform.position + ((Vector3)UnityEngine.Random.insideUnitCircle * 2.5f));
         }
         OnDie(this);
+        deathEventEmitter.start();
         gameObject.SetActive(false);
     }
 

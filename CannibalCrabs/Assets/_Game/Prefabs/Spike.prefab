@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   speed: 14
+  hit_sfx_event: event:/SndFx/crabs_demage
   lifetime: 0.75
 --- !u!58 &195433895831405176
 CircleCollider2D:

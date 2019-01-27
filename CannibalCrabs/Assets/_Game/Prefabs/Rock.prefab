@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 6
   speed: 10
+  hit_sfx_event: event:/SndFx/crabs_demage
 --- !u!58 &195433895831405176
 CircleCollider2D:
   m_ObjectHideFlags: 0

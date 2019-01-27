@@ -134,8 +134,8 @@ MonoBehaviour:
   hp: 10
   size: 0
   cooldownDuration: 0.3
-  rb: {fileID: 3227880346967064394}
   sprite: {fileID: 0}
+  shoot_sfx_event: event:/SndFx/spiker_basic
   spikePrefab: {fileID: 2711320115818484809, guid: e75f413ca4470484bb17797e270990a3,
     type: 3}
   dashPrefab: {fileID: 5770697363479975039, guid: 9799aeefe929e444fbfb24ef52408f1b,

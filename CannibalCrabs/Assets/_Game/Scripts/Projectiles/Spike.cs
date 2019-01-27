@@ -14,4 +14,11 @@ public class Spike : Projectile
         Destroy(gameObject, lifetime);
     }
 
+    public override void Hit(Collider2D collision)
+    {
+        base.Hit(collision);
+
+        hitEventEmitter.start();
+    }
+
 }

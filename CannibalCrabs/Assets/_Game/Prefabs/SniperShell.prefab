@@ -135,6 +135,7 @@ MonoBehaviour:
   size: 0
   cooldownDuration: 0.8
   sprite: {fileID: 0}
+  shoot_sfx_event: event:/SndFx/stoner_basic
   rockPrefab: {fileID: 5034868655164317515, guid: c0b6f9a561b62b24fafbc5ba9f5881d0,
     type: 3}
   ninjaBombPrefab: {fileID: 7324425442683843191, guid: bc6c7bff94474de49bba4cf64741f868,

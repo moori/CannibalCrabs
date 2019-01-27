@@ -11,4 +11,11 @@ public class Rock : Projectile
         damage += owner.size * 0.25f;
         this.owner = owner;
     }
+
+    public override void Hit(Collider2D collision)
+    {
+        base.Hit(collision);
+
+        hitEventEmitter.start();
+    }
 }

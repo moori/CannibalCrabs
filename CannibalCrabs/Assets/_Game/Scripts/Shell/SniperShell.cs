@@ -13,6 +13,7 @@ public class SniperShell : Shell
         Rock rock = Instantiate(rockPrefab);
         rock.Go(owner, direction);
         timeLastShot = Time.time;
+        shootEventEmitter.start();
     }
 
     public override void Sacrifice(Vector2 direction)
