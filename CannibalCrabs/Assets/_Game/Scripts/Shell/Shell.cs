@@ -76,11 +76,12 @@ public abstract class Shell : MonoBehaviour
         transform.SetParent(player.sprite.transform);
         transform.SetAsFirstSibling();
         transform.localPosition = new Vector3(0.93f, -0.5f, 0);
-        transform.localScale = Vector3.one;
         player.EnterShell();
         player.currentShell = this;
         owner = player;
-        player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
+        //player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
+        //player.transform.localScale = player.transform.localScale.normalized * transform.localScale.y;
+        transform.localScale = player.transform.localScale;
         OnEnterShell(this, player);
         healthbar.UpdateFillBar(hp / maxHealth[size]);
     }

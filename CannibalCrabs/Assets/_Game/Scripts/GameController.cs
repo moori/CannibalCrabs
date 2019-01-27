@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private List<Vector2> spawnPos = new List<Vector2>() { new Vector2(-17, 8), new Vector2(17, 8), new Vector2(-17, -8), new Vector2(17, -8), };
     private FMOD_StudioEventEmitter fmodEmitter;
 
-
+    public ParticleSystem deathPartPrefab;
 
     private void Awake()
     {
@@ -73,11 +73,10 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            shell.size = Shell.maxSize;
+            shell.size = 4;
             shell.sprite.sprite = masterShellSprite;
         }
-
-        shell.transform.localScale = Vector3.one * (1 + (shell.size * 0.25f));
+        shell.transform.localScale = Vector3.one * Size.sizeScale[shell.size];
     }
 
     IEnumerator SpawnShells()
@@ -95,6 +94,8 @@ public class GameController : MonoBehaviour
     public void OnPlayerDeath(Player player)
     {
         StartCoroutine(PlayerRespawnRoutine(player));
+        var part = Instantiate(deathPartPrefab);
+        part.transform.position = player.transform.position;
     }
 
     IEnumerator PlayerRespawnRoutine(Player player)
@@ -110,4 +111,9 @@ public class GameController : MonoBehaviour
         Debug.Log("temos um grande vencedor " + winner.name);
         bgm_victoty.setValue(1f); //calculateEnemyDistance()is your method that will return the correct distance to be passed to FMOD)
     }
+}
+
+public static class Size
+{
+    public static float[] sizeScale = new float[] { .5f, 1, 1.5f, 2, 2.5f };
 }

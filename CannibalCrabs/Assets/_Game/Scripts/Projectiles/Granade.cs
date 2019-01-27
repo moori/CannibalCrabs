@@ -45,6 +45,12 @@ public class Granade : Projectile
 
     public override void Hit(Collider2D collision)
     {
+
+        hitPart.gameObject.SetActive(true);
+        hitPart.gameObject.transform.SetParent(null);
+
+        hitEventEmitter.start();
+
         if (collision.CompareTag("Player"))
         {
             Player player = collision.GetComponent<Player>();
@@ -53,8 +59,6 @@ public class Granade : Projectile
 
             player.TakeDamage(damage);
         }
-
-        hitEventEmitter.start();
         //else if (collision.CompareTag("Shell"))
         //{
         //    Shell shell = collision.GetComponent<Shell>();

@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour
     public FMOD.Studio.EventInstance hitEventEmitter;
     public string hit_sfx_event;
 
+    public ParticleSystem hitPart;
+
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +43,8 @@ public class Projectile : MonoBehaviour
         //    shell.Push((collision.transform.position - transform.position).normalized, damage / 2);
         //    shell.TakeDamage(damage);
         //}
+        hitPart.gameObject.SetActive(true);
+        hitPart.gameObject.transform.SetParent(null);
 
         Destroy(gameObject);
     }

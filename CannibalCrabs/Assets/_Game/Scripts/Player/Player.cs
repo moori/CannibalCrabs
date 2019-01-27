@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
     public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
     private Animator animator;
 
+    public ParticleSystem sandPart;
+    public ParticleSystem disconfortPart;
+    public ParticleSystem smokePart;
 
     [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance deathEventEmitter;
@@ -72,8 +75,24 @@ public class Player : MonoBehaviour
                 levelUpEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_level_final");
             }
             levelUpEventEmitter.start();
+            if (currentShell != null)
+                disconfortPart.gameObject.SetActive(true);
         }
+
+        if (currentShell == null)
+        {
+            Rescale();
+        }
+
         eatEventEmitter.start();
+    }
+
+    public void Rescale()
+    {
+        var initScale = transform.localScale.sqrMagnitude;
+        transform.localScale = Vector3.one * Size.sizeScale[size];
+        if (initScale < transform.localScale.sqrMagnitude)
+            smokePart.Play();
     }
 
     public void SetPlayer(int i)
@@ -125,16 +144,20 @@ public class Player : MonoBehaviour
     public void Sacrifice()
     {
         if (currentShell != null)
+        {
             currentShell.Sacrifice(aimDirection);
-
-        exitShellEventEmitter.start();
+            exitShellEventEmitter.start();
+            Rescale();
+            disconfortPart.gameObject.SetActive(false);
+        }
     }
 
     public void Move(float h, float v)
     {
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
         animator.SetBool("walking", rb.velocity.magnitude > 0.1f);
-        animator.speed = (rb.velocity.magnitude / 12f);
+        animator.speed = rb.velocity.magnitude == 0 ? 1 : (rb.velocity.magnitude / 12f);
+        sandPart.Emit((int)(rb.velocity.magnitude * 0.25f));
         if (h != 0)
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x) * (h > 0 ? -1 : 1), sprite.transform.localScale.y, sprite.transform.localScale.z);
@@ -177,7 +200,7 @@ public class Player : MonoBehaviour
             var meat = Instantiate(meatPrefab);
             meat.meatSprite.sprite = meatSprites.GetRandom();
             meat.meatSprite.color = color;
-            meat.transform.localScale = transform.localScale;
+            //meat.transform.localScale = transform.localScale;
             meat.transform.position = transform.position;
             meat.Go(transform.position + ((Vector3)UnityEngine.Random.insideUnitCircle * 2.5f));
         }
