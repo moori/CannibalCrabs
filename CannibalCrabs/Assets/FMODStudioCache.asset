@@ -13,29 +13,45 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114029498033228424}
-  - {fileID: 114172408165751666}
+  - {fileID: 114993103491358384}
+  - {fileID: 114591854400899040}
   EditorEvents:
-  - {fileID: 114877218447740650}
-  - {fileID: 114177219912504868}
-  - {fileID: 114900116532006844}
-  - {fileID: 114301631637672748}
-  - {fileID: 114134530736379636}
-  - {fileID: 114423099440110338}
-  - {fileID: 114012713546679764}
-  - {fileID: 114236610159020350}
-  - {fileID: 114008382629911090}
-  - {fileID: 114258325140471732}
-  - {fileID: 114449537676055152}
-  - {fileID: 114955995246417436}
-  - {fileID: 114075640258672950}
-  - {fileID: 114892413333761062}
-  - {fileID: 114665884617241060}
+  - {fileID: 114237191835314606}
+  - {fileID: 114736121634280036}
+  - {fileID: 114514207620739484}
+  - {fileID: 114973669549819894}
+  - {fileID: 114649048900743940}
+  - {fileID: 114362809254777468}
+  - {fileID: 114247412828766086}
+  - {fileID: 114863103612887520}
+  - {fileID: 114330174106611620}
+  - {fileID: 114927194988329688}
+  - {fileID: 114085117097119720}
+  - {fileID: 114353295838541988}
+  - {fileID: 114753307198375702}
+  - {fileID: 114348249150659984}
+  - {fileID: 114232459062560010}
+  - {fileID: 114379730030148376}
+  - {fileID: 114397880875260570}
+  - {fileID: 114323033531913950}
+  - {fileID: 114043847320172832}
+  - {fileID: 114613246053409744}
+  - {fileID: 114035389196377384}
+  - {fileID: 114818924039969890}
+  - {fileID: 114157009285635966}
+  - {fileID: 114174735568782564}
+  - {fileID: 114333349511115016}
+  - {fileID: 114534277051939298}
+  - {fileID: 114522813205568566}
+  - {fileID: 114956608700985934}
+  - {fileID: 114167351593331510}
+  - {fileID: 114305235965126094}
+  - {fileID: 114995635109250960}
   MasterBanks:
-  - {fileID: 114172408165751666}
+  - {fileID: 114591854400899040}
   StringsBanks:
-  - {fileID: 114029498033228424}
-  stringsBankWriteTime: 636841389531119864
+  - {fileID: 114993103491358384}
+  stringsBankWriteTime: 636841912957873989
   cacheVersion: 3
 --- !u!114 &114008382629911090
 MonoBehaviour:
@@ -102,6 +118,52 @@ MonoBehaviour:
   - Name: 
     Value: 1398
   Exists: 1
+--- !u!114 &114035389196377384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/spiker_basic
+  guid: 7ac779d6fc824744889e9006a9791f1e
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 340
+--- !u!114 &114043847320172832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/shell_drag
+  guid: 6c294b221c5b5c4c9cbefc17b74878d2
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2500
 --- !u!114 &114050410707806934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +211,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 880
+--- !u!114 &114085117097119720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_fast_1
+  guid: 42fd581463268d4fb42112a7010150b1
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 94
 --- !u!114 &114100686340287196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +296,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1367
+--- !u!114 &114157009285635966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/bomber_basic_atack
+  guid: 9ab01a1f99ccda409ee9096bf72179e9
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 880
+--- !u!114 &114167351593331510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_slow_3
+  guid: c448ebeae33ff64c91a89ddb7d548f76
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 180
 --- !u!114 &114172408165751666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +362,29 @@ MonoBehaviour:
   - Name: 
     Value: 1795392
   Exists: 1
+--- !u!114 &114174735568782564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_collect
+  guid: a9a77aac6b71a54fa91eccbe568588ac
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 150
 --- !u!114 &114177219912504868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +408,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1367
+--- !u!114 &114232459062560010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/bomber_ult_2
+  guid: 4f6dd6914fd45c4496e0fe0617f2d296
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1366
 --- !u!114 &114236610159020350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +454,53 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 781
+--- !u!114 &114237191835314606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_demage
+  guid: 00faa522068e3e449e1fc86612f6521b
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 260
+--- !u!114 &114247412828766086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Music/music_gameplay
+  guid: 3495b073ec6498429b5aebb86163d712
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114593203400673078}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 87053
 --- !u!114 &114258325140471732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +547,98 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1563
+--- !u!114 &114305235965126094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_slow_2
+  guid: f17f7a5ddd09344ebaedf46fa7ac342e
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 150
+--- !u!114 &114323033531913950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/stoner_basic
+  guid: 5c41626fbf560641b7de5210b3544056
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 781
+--- !u!114 &114330174106611620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/bomber_basic_fall
+  guid: 40e615a7b1d1bb4ebe1190b3f8008680
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1563
+--- !u!114 &114333349511115016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_fast_2
+  guid: ad6707ec1604404b801096525ab455ff
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 120
 --- !u!114 &114340766943196324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +655,98 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114348249150659984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/flamer_basic
+  guid: 49960bf3ad239d4cb119e24b690a497a
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5517
+--- !u!114 &114353295838541988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_level_up
+  guid: 433712d5fb5eb244a71c63cd02365285
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1367
+--- !u!114 &114362809254777468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_death
+  guid: 321ef95204ba3f4698824b95afd04cc2
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1367
+--- !u!114 &114379730030148376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/shell_crack
+  guid: 55ca0329146e924fb2f7348782ca21cc
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1366
 --- !u!114 &114393765693263344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +766,29 @@ MonoBehaviour:
   - Name: 
     Value: 778
   Exists: 1
+--- !u!114 &114397880875260570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Music/music_menu
+  guid: 5701f97b455a174485f89751f0822ff7
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 35036
 --- !u!114 &114423099440110338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +835,157 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 340
+--- !u!114 &114514207620739484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/bomber_ult_1
+  guid: 08e51b0468d78845b0938518e3fb572e
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1950
+--- !u!114 &114522813205568566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/spiker_miss
+  guid: b723ec7ee42fe44694b86b78cd739183
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
+--- !u!114 &114534277051939298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/stoner_ult
+  guid: b38766716bf09f46861057c0d0df4b5c
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3104
+--- !u!114 &114591854400899040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Projects\GGJ_CannibalCrabs\CannibalCrabs\CannibalCrabs\Assets\_Game\Audio\Fmod\Master
+    Bank.bank
+  lastModified: 636841912958352492
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1968896
+  Exists: 1
+--- !u!114 &114593203400673078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: victory
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114613246053409744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_shell_off
+  guid: 7aa8ee2638122b419ab65c274666a785
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1367
+--- !u!114 &114649048900743940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_fast_3
+  guid: 31f5e1ea61338b44847ac06b920e4dd3
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 150
 --- !u!114 &114665884617241060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +1009,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1367
+--- !u!114 &114736121634280036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_fast_4
+  guid: 0678d2208e2f8b488a478778e88f8a67
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 180
+--- !u!114 &114753307198375702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/flamer_ult
+  guid: 43f7f0690689dd4aac70a42072f6ee36
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2852
 --- !u!114 &114818919930809232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +1075,52 @@ MonoBehaviour:
   - Name: 
     Value: 1640512
   Exists: 1
+--- !u!114 &114818924039969890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_level_final
+  guid: 892c429dc196204f82d32fee420e4748
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1050
+--- !u!114 &114863103612887520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/spiker_ult
+  guid: 40d4e6213fb97d4f84fecc84d62d7fe5
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &114877218447740650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +1191,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 87053
+--- !u!114 &114927194988329688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/stoner_miss
+  guid: 4138c2edccd7cf41bc652ed8fcd3fd8e
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &114955995246417436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,3 +1237,91 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1050
+--- !u!114 &114956608700985934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_slow_4
+  guid: ba378920417f64408f34ed12eb10eec0
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 210
+--- !u!114 &114973669549819894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_slow_1
+  guid: 1c3333f54eeea34f92a8010e90eb5102
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 119
+--- !u!114 &114993103491358384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: Assets\_Game\Audio\Fmod\Master Bank.strings.bank
+  lastModified: 636841912957873989
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2042
+  Exists: 1
+--- !u!114 &114995635109250960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SndFx/crabs_shell_on
+  guid: fb48f2d3f71c8a449a62d34116a8185b
+  Banks:
+  - {fileID: 114591854400899040}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1367

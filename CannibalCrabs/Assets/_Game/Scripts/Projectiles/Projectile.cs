@@ -12,7 +12,10 @@ public class Projectile : MonoBehaviour
 
     [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance hitEventEmitter;
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance missEventEmitter;
     public string hit_sfx_event;
+    public string miss_sfx_event;
 
     public ParticleSystem hitPart;
 
@@ -21,6 +24,7 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         hitEventEmitter = FMODUnity.RuntimeManager.CreateInstance(hit_sfx_event);
+        missEventEmitter = FMODUnity.RuntimeManager.CreateInstance(miss_sfx_event);
     }
 
     public virtual void Go(Player owner, Vector2 direction)
@@ -36,6 +40,10 @@ public class Projectile : MonoBehaviour
                 return;
 
             player.TakeDamage(damage);
+        }
+        else
+        {
+            missEventEmitter.start();
         }
         //else if (collision.CompareTag("Shell"))
         //{

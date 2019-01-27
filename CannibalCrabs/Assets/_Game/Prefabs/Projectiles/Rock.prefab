@@ -51,6 +51,7 @@ MonoBehaviour:
   damage: 6
   speed: 10
   hit_sfx_event: event:/SndFx/crabs_demage
+  miss_sfx_event: event:/SndFx/stoner_miss
   hitPart: {fileID: 7321619121604992917}
 --- !u!58 &195433895831405176
 CircleCollider2D:

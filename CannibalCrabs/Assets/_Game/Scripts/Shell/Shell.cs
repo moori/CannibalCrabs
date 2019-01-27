@@ -27,6 +27,8 @@ public abstract class Shell : MonoBehaviour
     [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance crackShellEventEmitter;
 
+    public ParticleSystem crackShellPart;
+
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,6 +63,10 @@ public abstract class Shell : MonoBehaviour
     {
         if (owner.currentShell)
             owner.currentShell = null;
+
+        crackShellPart.gameObject.SetActive(true);
+        crackShellPart.gameObject.transform.SetParent(null);
+
         Destroy(gameObject);
     }
 
@@ -84,7 +90,8 @@ public abstract class Shell : MonoBehaviour
         //transform.localScale = player.transform.localScale.normalized;
         transform.localScale = new Vector3(Mathf.Sign(player.transform.localScale.x), 1, 1);
         OnEnterShell(this, player);
-        healthbar.UpdateFillBar(hp / maxHealth[size]);
+        if (size < 4)
+            healthbar.UpdateFillBar(hp / maxHealth[size]);
     }
 
     public virtual void Push(Vector2 direction, float force)

@@ -51,6 +51,7 @@ MonoBehaviour:
   damage: 3
   speed: 14
   hit_sfx_event: event:/SndFx/crabs_demage
+  miss_sfx_event: event:/SndFx/spiker_miss
   hitPart: {fileID: 7999638078750648294}
   lifetime: 0.75
 --- !u!58 &195433895831405176

@@ -111,6 +111,7 @@ Transform:
   m_Children:
   - {fileID: 3227880346554954219}
   - {fileID: 1855751861506510148}
+  - {fileID: 3755204134570541050}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,6 +137,7 @@ MonoBehaviour:
   cooldownDuration: 0.3
   sprite: {fileID: 0}
   shoot_sfx_event: event:/SndFx/spiker_basic
+  crackShellPart: {fileID: 3950615491314007968}
   spikePrefab: {fileID: 2711320115818484809, guid: e75f413ca4470484bb17797e270990a3,
     type: 3}
   dashPrefab: {fileID: 5770697363479975039, guid: 9799aeefe929e444fbfb24ef52408f1b,
@@ -177,6 +179,75 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.8}
   serializedVersion: 2
   m_Radius: 1
+--- !u!1001 &3752329190200155628
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3227880346967064405}
+    m_Modifications:
+    - target: {fileID: 1750940742320366, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_Name
+      value: CFX4 Sparks Explosion B 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f8d6685c29f17cf42ac79f6455f93242, type: 3}
+--- !u!4 &3755204134570541050 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4461574346646038, guid: f8d6685c29f17cf42ac79f6455f93242,
+    type: 3}
+  m_PrefabInstance: {fileID: 3752329190200155628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3950615491314007968 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198602994958770764, guid: f8d6685c29f17cf42ac79f6455f93242,
+    type: 3}
+  m_PrefabInstance: {fileID: 3752329190200155628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6436723513025736374
 PrefabInstance:
   m_ObjectHideFlags: 0

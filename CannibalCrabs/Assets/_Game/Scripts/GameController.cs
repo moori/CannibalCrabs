@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -23,6 +24,8 @@ public class GameController : MonoBehaviour
 
     public ParticleSystem deathPartPrefab;
     public LayerMask shellSpawnMask;
+
+    public TextMeshProUGUI winnerText;
     private void Awake()
     {
 
@@ -74,7 +77,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            shell.size = 3;
+            shell.size = Shell.maxSize;
             shell.sprite.sprite = masterShellSprite;
         }
         shell.transform.localScale = Vector3.one * Size.sizeScale[shell.size];
@@ -94,18 +97,19 @@ public class GameController : MonoBehaviour
 
     public Vector3 ShellSpawnPosition()
     {
-        Vector3 pos = new Vector2(Random.Range(-18f, 18f), Random.Range(-8f, 8f));
-        for (int i = 0; i < 10; i++)
+        Vector3 pos = Vector3.zero;
+        for (int i = 0; i < 100; i++)
+        //while (true)
         {
 
-            if (Physics2D.OverlapCircle(pos, 2, shellSpawnMask) == null)
+            if (Physics2D.OverlapCircle(pos, 3, shellSpawnMask) == null)
             {
-                return pos;
+                break;
             }
             pos = new Vector2(Random.Range(-18f, 18f), Random.Range(-8f, 8f));
         }
-
         return pos;
+
     }
 
     public void OnPlayerDeath(Player player)
@@ -131,6 +135,9 @@ public class GameController : MonoBehaviour
         cam.DOOrthoSize(8, 1).SetEase(Ease.InOutQuad);
         cam.transform.SetParent(winner.transform);
         cam.transform.DOLocalMove(new Vector3(0, 0, cam.transform.localPosition.z), 1).SetEase(Ease.InOutQuad);
+
+        winnerText.gameObject.SetActive(true);
+        winnerText.color = winner.color;
     }
 }
 

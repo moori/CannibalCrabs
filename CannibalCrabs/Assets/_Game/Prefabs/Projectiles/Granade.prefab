@@ -51,6 +51,7 @@ MonoBehaviour:
   damage: 4
   speed: 7
   hit_sfx_event: event:/SndFx/bomber_basic_atack
+  miss_sfx_event: event:/SndFx/bomber_basic_atack
   hitPart: {fileID: 6629282592260824212}
   spriteScaleCurve:
     serializedVersion: 2
