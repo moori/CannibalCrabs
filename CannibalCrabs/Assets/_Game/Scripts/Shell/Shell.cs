@@ -65,6 +65,7 @@ public abstract class Shell : MonoBehaviour
         rb.GetComponent<Collider2D>().enabled = false;
         rb.velocity = Vector2.zero;
         transform.SetParent(player.sprite.transform);
+        transform.SetAsFirstSibling();
         transform.localPosition = new Vector3(0.93f, -0.5f, 0);
         transform.localScale = Vector3.one;
         player.EnterShell();

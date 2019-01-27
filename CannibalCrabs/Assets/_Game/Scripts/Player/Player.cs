@@ -11,8 +11,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Vector2 aimDirection = Vector2.right;
 
-    [HideInInspector]
-    public SpriteRenderer sprite;
+    public GameObject sprite;
     public List<SpriteRenderer> colorSprites;
 
     [HideInInspector]
@@ -34,11 +33,11 @@ public class Player : MonoBehaviour
     private bool canTakeDamage = true;
     private bool isVisible = true;
     public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
-
+    private Animator animator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     public void Eat()
@@ -106,6 +105,7 @@ public class Player : MonoBehaviour
     public void Move(float h, float v)
     {
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
+        animator.SetBool("walking", rb.velocity.magnitude > 0.1f);
         if (h != 0)
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x) * (h > 0 ? -1 : 1), sprite.transform.localScale.y, sprite.transform.localScale.z);

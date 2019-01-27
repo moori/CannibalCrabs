@@ -134,6 +134,7 @@ MonoBehaviour:
   hp: 10
   size: 0
   cooldownDuration: 0.3
+  rb: {fileID: 3227880346967064394}
   sprite: {fileID: 0}
   spikePrefab: {fileID: 2711320115818484809, guid: e75f413ca4470484bb17797e270990a3,
     type: 3}
@@ -183,6 +184,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3227880346967064405}
     m_Modifications:
+    - target: {fileID: 6254690229621626551, guid: 341e4ffd1f6f92d4bb59773c2392f6d3,
+        type: 3}
+      propertyPath: m_Name
+      value: Healthbar
+      objectReference: {fileID: 0}
     - target: {fileID: 4653099754963608562, guid: 341e4ffd1f6f92d4bb59773c2392f6d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -287,11 +293,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6254690229621626551, guid: 341e4ffd1f6f92d4bb59773c2392f6d3,
-        type: 3}
-      propertyPath: m_Name
-      value: Healthbar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 341e4ffd1f6f92d4bb59773c2392f6d3, type: 3}

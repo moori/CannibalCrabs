@@ -10,6 +10,16 @@ public class Granade : Projectile
     private bool isTraveling;
     private Vector2 startPos;
 
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance shootEventEmitter;
+
+    public override void Awake()
+    {
+        base.Awake();
+        shootEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/bomber_basic_atack");
+        //sprite = GetComponentsInChildren<SpriteRenderer>()[1];
+    }
+
     public override void Go(Player owner, Vector2 direction)
     {
         isTraveling = true;
@@ -17,7 +27,7 @@ public class Granade : Projectile
         startPos = transform.position;
         target = startPos + direction * range;
         damage += owner.size * 0.25f;
-        sprite.color = owner.color;
+        granadeSprite.color = owner.color;
         StartCoroutine(TravelRoutine());
     }
 
@@ -52,6 +62,8 @@ public class Granade : Projectile
 
             player.TakeDamage(damage);
         }
+
+        shootEventEmitter.start();
         //else if (collision.CompareTag("Shell"))
         //{
         //    Shell shell = collision.GetComponent<Shell>();

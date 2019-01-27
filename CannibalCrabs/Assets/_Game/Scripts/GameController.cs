@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance bgmMusic;
+    private FMOD.Studio.ParameterInstance bgm_victoty;
+
     public List<Shell> shellPrefabs;
     public Player playerPrefab;
     public int maxShells = 6;
@@ -15,12 +19,15 @@ public class GameController : MonoBehaviour
     private List<Player> players = new List<Player>();
     private List<Vector2> spawnPos = new List<Vector2>() { new Vector2(-17, 8), new Vector2(17, 8), new Vector2(-17, -8), new Vector2(17, -8), };
     private FMOD_StudioEventEmitter fmodEmitter;
-    private FMOD.Studio.EventInstance bgmMusic;
-    private FMOD.Studio.ParameterInstance bgm_victoty;
+
+
 
     private void Awake()
     {
-        //bgmMusic = FMOD_StudioSystem
+
+        bgmMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music_gameplay");
+        bgmMusic.getParameter("victory", out bgm_victoty); //The first proximidadeEnemigo is the name you gave in your FMOD Project
+        bgmMusic.start(); //Start your music
     }
 
     private IEnumerator Start()
@@ -101,5 +108,6 @@ public class GameController : MonoBehaviour
     public void EndGame(Player winner)
     {
         Debug.Log("temos um grande vencedor " + winner.name);
+        bgm_victoty.setValue(1f); //calculateEnemyDistance()is your method that will return the correct distance to be passed to FMOD)
     }
 }
