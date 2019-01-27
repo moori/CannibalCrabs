@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     public Poison poison;
     public bool isPoisoned { get { return poison != null; } }
     private bool canTakeDamage = true;
-    private bool isDisabled = false;
     private bool isVisible = true;
     public bool canEat => currentShell != null ? meatsCollected < sizeProgression[currentShell.size] : true;
 
@@ -44,9 +43,6 @@ public class Player : MonoBehaviour
 
     public void Eat()
     {
-        if (isDisabled)
-            return;
-
         int initSize = size;
         meatsCollected++;
         if (size > initSize)
@@ -65,13 +61,11 @@ public class Player : MonoBehaviour
 
     public void Disable()
     {
-        isDisabled = true;
         SetVisibility(false);
     }
 
     public void Enable(Vector2? position = null)
     {
-        isDisabled = false;
         SetVisibility(true);
         if (position != null)
             transform.position = position.Value;
@@ -79,9 +73,6 @@ public class Player : MonoBehaviour
 
     public void Infect(float duration, float totalDamage, int ticks = 10)
     {
-        if (isDisabled)
-            return;
-
         poison = new Poison(this, duration, totalDamage, ticks);
     }
 
@@ -98,31 +89,22 @@ public class Player : MonoBehaviour
 
     public void EnterShell()
     {
-        if (isDisabled)
-            return;
-
         bubblesParticles.SetActive(true);
     }
 
     public void Shoot()
     {
-        if (isDisabled)
-            return;
-
         currentShell?.Shoot(aimDirection);
     }
 
     public void Sacrifice()
     {
-        if (currentShell != null && !isDisabled)
+        if (currentShell != null)
             currentShell.Sacrifice(aimDirection);
     }
 
     public void Move(float h, float v)
     {
-        if (isDisabled)
-            return;
-
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
         if (h != 0)
         {
@@ -147,9 +129,6 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (isDisabled)
-            return;
-
         if (currentShell == null)
         {
             Die();

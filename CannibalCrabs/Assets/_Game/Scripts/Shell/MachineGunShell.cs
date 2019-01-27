@@ -7,12 +7,12 @@ public class MachineGunShell : Shell
 
     public override void Shoot(Vector2 direction)
     {
-        if (canShoot)
-        {
-            Spike spike = Instantiate(spikePrefab);
-            spike.Go(owner, (direction + Random.insideUnitCircle.normalized * 0.3f).normalized);
-            timeLastShot = Time.time;
-        }
+        if (!canShoot)
+            return;
+
+        Spike spike = Instantiate(spikePrefab);
+        spike.Go(owner, (direction + Random.insideUnitCircle.normalized * 0.3f).normalized);
+        timeLastShot = Time.time;
     }
 
     public override void Sacrifice(Vector2 direction)
