@@ -49,6 +49,9 @@ public class Player : MonoBehaviour
     public FMOD.Studio.EventInstance enterShellEventEmitter;
     [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance exitShellEventEmitter;
+    [FMODUnity.EventRef]
+    public FMOD.Studio.EventInstance walkEventEmitter;
+    private string[] walkEvents = new string[] { "event:/SndFx/crabs_slow_4", "event:/SndFx/crabs_slow_3", "event:/SndFx/crabs_slow_2", "event:/SndFx/crabs_slow_1" };
 
     private void Awake()
     {
@@ -60,6 +63,9 @@ public class Player : MonoBehaviour
         levelUpEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_level_up");
         enterShellEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_shell_on");
         exitShellEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_shell_off");
+        walkEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_slow_1");
+
+        Rescale();
     }
 
     public void Eat()
@@ -139,6 +145,12 @@ public class Player : MonoBehaviour
     public void Shoot()
     {
         currentShell?.Shoot(aimDirection);
+
+        animator.SetTrigger("shoot"); //TODO
+        //if (currentShell != null && currentShell.canShoot)
+        //{
+        //    animator.SetTrigger("shoot");
+        //}
     }
 
     public void Sacrifice()
@@ -155,12 +167,30 @@ public class Player : MonoBehaviour
     public void Move(float h, float v)
     {
         rb.velocity = new Vector2(h, v).normalized * speed * (currentShell != null ? 1 / (1.5f + currentShell.size) : 1);
-        animator.SetBool("walking", rb.velocity.magnitude > 0.1f);
-        animator.speed = rb.velocity.magnitude == 0 ? 1 : (rb.velocity.magnitude / 12f);
+        var isMoving = rb.velocity.magnitude > 0.1f;
+
+        animator.SetBool("walking", isMoving);
+        //animator.speed = isMoving ? 1 : (rb.velocity.magnitude / 12f);
+        animator.SetFloat("speed", (rb.velocity.magnitude / 12f));
         sandPart.Emit((int)(rb.velocity.magnitude * 0.25f));
         if (h != 0)
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x) * (h > 0 ? -1 : 1), sprite.transform.localScale.y, sprite.transform.localScale.z);
+        }
+
+        if (isMoving)
+        {
+            FMOD.Studio.PLAYBACK_STATE state;
+            walkEventEmitter.getPlaybackState(out state);
+            //walkEventEmitter.setPitch(0.5f + animator.speed);
+
+            if (state == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+                walkEventEmitter.start();
+
+        }
+        else
+        {
+            walkEventEmitter.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
     }
 

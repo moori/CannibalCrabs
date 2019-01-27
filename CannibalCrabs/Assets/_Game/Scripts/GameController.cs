@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class GameController : MonoBehaviour
     private FMOD_StudioEventEmitter fmodEmitter;
 
     public ParticleSystem deathPartPrefab;
-
+    public LayerMask shellSpawnMask;
     private void Awake()
     {
 
@@ -61,7 +62,7 @@ public class GameController : MonoBehaviour
             else
                 shellsSpawned.Remove(s);
         };
-        shell.transform.position = new Vector2(Random.Range(-18f, 18f), Random.Range(-8f, 8f));
+        shell.transform.position = ShellSpawnPosition();
 
         if (!isFuderosao)
         {
@@ -73,7 +74,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            shell.size = 4;
+            shell.size = 3;
             shell.sprite.sprite = masterShellSprite;
         }
         shell.transform.localScale = Vector3.one * Size.sizeScale[shell.size];
@@ -89,6 +90,22 @@ public class GameController : MonoBehaviour
                 SpawnShell();
             yield return new WaitForSeconds(2);
         }
+    }
+
+    public Vector3 ShellSpawnPosition()
+    {
+        Vector3 pos = new Vector2(Random.Range(-18f, 18f), Random.Range(-8f, 8f));
+        for (int i = 0; i < 10; i++)
+        {
+
+            if (Physics2D.OverlapCircle(pos, 2, shellSpawnMask) == null)
+            {
+                return pos;
+            }
+            pos = new Vector2(Random.Range(-18f, 18f), Random.Range(-8f, 8f));
+        }
+
+        return pos;
     }
 
     public void OnPlayerDeath(Player player)
@@ -110,10 +127,14 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("temos um grande vencedor " + winner.name);
         bgm_victoty.setValue(1f); //calculateEnemyDistance()is your method that will return the correct distance to be passed to FMOD)
+        var cam = FindObjectOfType<Camera>();
+        cam.DOOrthoSize(8, 1).SetEase(Ease.InOutQuad);
+        cam.transform.SetParent(winner.transform);
+        cam.transform.DOLocalMove(new Vector3(0, 0, cam.transform.localPosition.z), 1).SetEase(Ease.InOutQuad);
     }
 }
 
 public static class Size
 {
-    public static float[] sizeScale = new float[] { .5f, 1, 1.5f, 2, 2.5f };
+    public static float[] sizeScale = new float[] { .8f, 1.1f, 1.5f, 2, 2.5f };
 }

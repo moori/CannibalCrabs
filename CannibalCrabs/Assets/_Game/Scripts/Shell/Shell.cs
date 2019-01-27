@@ -11,7 +11,7 @@ public abstract class Shell : MonoBehaviour
     public static readonly int maxSize = 4;
 
     protected float timeLastShot;
-    protected bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
+    public bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
     protected Rigidbody2D rb;
     protected Player owner;
     [HideInInspector]
@@ -81,7 +81,8 @@ public abstract class Shell : MonoBehaviour
         owner = player;
         //player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
         //player.transform.localScale = player.transform.localScale.normalized * transform.localScale.y;
-        transform.localScale = player.transform.localScale;
+        //transform.localScale = player.transform.localScale.normalized;
+        transform.localScale = new Vector3(Mathf.Sign(player.transform.localScale.x), 1, 1);
         OnEnterShell(this, player);
         healthbar.UpdateFillBar(hp / maxHealth[size]);
     }
