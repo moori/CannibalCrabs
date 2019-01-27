@@ -40,11 +40,14 @@ public class GameController : MonoBehaviour
         //for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         for (int i = 0; i < 4; i++)
         {
-            var player = Instantiate(playerPrefab);
-            player.SetPlayer(i);
-            player.transform.position = spawnPos[i];
-            players.Add(player);
-            player.OnDie += OnPlayerDeath;
+            if (TitleController.players[i])
+            {
+                var player = Instantiate(playerPrefab);
+                player.SetPlayer(i);
+                player.transform.position = spawnPos[i];
+                players.Add(player);
+                player.OnDie += OnPlayerDeath;
+            }
         }
 
         SpawnShell(true);
@@ -97,7 +100,7 @@ public class GameController : MonoBehaviour
 
                 shell.size = Random.Range(min, max + 1);
             }
-            
+
             shellsSpawned.Add(shell);
         }
         else
