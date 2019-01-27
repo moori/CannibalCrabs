@@ -101,6 +101,17 @@ public class TitleController : MonoBehaviour
                     playerJoinCanvas.SetActive(false);
                     creditsCanvas.SetActive(false);
                 }
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    Delay();
+                    state = MenuState.MAIN;
+
+                    mainCanvas.SetActive(true);
+                    howToPlayCanvas.SetActive(false);
+                    playerJoinCanvas.SetActive(false);
+                    creditsCanvas.SetActive(false);
+                }
+
                 if (Input.GetButtonDown("P1_Shoot"))
                 {
                     players[0] = true;
