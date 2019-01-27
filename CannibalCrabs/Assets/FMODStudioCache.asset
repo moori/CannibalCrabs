@@ -117,12 +117,12 @@ MonoBehaviour:
   Path: event:/Music/music_gameplay
   guid: 3495b073ec6498429b5aebb86163d712
   Banks:
-  - {fileID: 114818919930809232}
+  - {fileID: 114520548940174524}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114100686340287196}
+  - {fileID: 114421710550558220}
   MinDistance: 0
   MaxDistance: 0
   Length: 87053
@@ -180,7 +180,7 @@ MonoBehaviour:
   Path: event:/Music/music_menu
   guid: 5701f97b455a174485f89751f0822ff7
   Banks:
-  - {fileID: 114818919930809232}
+  - {fileID: 114520548940174524}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\_Game\Audio\Fmod\Master Bank.strings.bank
-  lastModified: 636841214986582226
+  lastModified: 636841276623412732
   LoadResult: 0
   FileSizes:
   - Name: 
