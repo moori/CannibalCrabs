@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
         //for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         for (int i = 0; i < 4; i++)
         {
-            if (TitleController.players[i])
+            if (TitleController.players != null ? TitleController.players[i] : true)
             {
                 var player = Instantiate(playerPrefab);
                 player.SetPlayer(i);

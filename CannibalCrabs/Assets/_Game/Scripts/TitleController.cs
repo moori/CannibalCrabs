@@ -22,7 +22,7 @@ public class TitleController : MonoBehaviour
     public Sprite emptySlot;
 
 
-    public static bool[] players = new bool[4];
+    public static bool[] players;
 
     private bool canClick = true;
 
@@ -44,6 +44,8 @@ public class TitleController : MonoBehaviour
     {
         bgmMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music_menu");
         bgmMusic.start();
+
+        TitleController.players = new bool[4];
     }
 
     public void OnClickPlay()
