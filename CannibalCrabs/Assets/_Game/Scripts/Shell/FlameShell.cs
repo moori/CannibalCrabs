@@ -17,6 +17,7 @@ public class FlameShell : Shell
     public float turnSpeed;
 
     private bool isShooting;
+    private FMOD.Studio.PLAYBACK_STATE flameEmmiterState;
 
     public override void Awake()
     {
@@ -48,7 +49,9 @@ public class FlameShell : Shell
 
         FlameParticles.Play();
         timeLastShot = Time.time;
-        shootEventEmitter.start();
+        shootEventEmitter.getPlaybackState(out flameEmmiterState);
+        if (flameEmmiterState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+            shootEventEmitter.start();
     }
 
     public override void EnterShell(Player player)
@@ -73,11 +76,13 @@ public class FlameShell : Shell
             //reload
             percent += (Time.deltaTime) / flameAmmoReload;
             FlameParticles.Stop();
+            shootEventEmitter.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         else
         {
             //shooting
             percent -= (Time.deltaTime / flameAmmoDuration);
+
         }
 
         if (percent <= 0.05f && canFlame)

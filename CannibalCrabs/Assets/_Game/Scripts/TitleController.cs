@@ -46,6 +46,8 @@ public class TitleController : MonoBehaviour
         bgmMusic.start();
 
         TitleController.players = new bool[4];
+
+        GoToMain();
     }
 
     public void OnClickPlay()
@@ -69,6 +71,32 @@ public class TitleController : MonoBehaviour
         playerJoinCanvas.SetActive(false);
         creditsCanvas.SetActive(true);
     }
+    public void GoToMain()
+    {
+        Delay();
+        state = MenuState.MAIN;
+
+        mainCanvas.SetActive(true);
+        howToPlayCanvas.SetActive(false);
+        playerJoinCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
+    }
+    public void GoToHowToPlay()
+    {
+        Delay();
+        state = MenuState.HOW_TO_PLAY;
+
+        mainCanvas.SetActive(false);
+        howToPlayCanvas.SetActive(true);
+        playerJoinCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
+    }
+
+    public void StartMatch()
+    {
+        bgmMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        SceneManager.LoadScene("Game");
+    }
 
     public void OnClickExit()
     {
@@ -88,68 +116,46 @@ public class TitleController : MonoBehaviour
             case MenuState.HOW_TO_PLAY:
                 if (Input.GetButtonDown("Submit"))
                 {
-                    bgmMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-
-                    SceneManager.LoadScene("Game");
+                    Delay();
+                    StartMatch();
+                }
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    Delay();
+                    GoToMain();
                 }
                 break;
             case MenuState.PLAYER_JOIN:
                 if (Input.GetButtonDown("Start"))
                 {
-                    Delay();
-                    state = MenuState.HOW_TO_PLAY;
-
-                    mainCanvas.SetActive(false);
-                    howToPlayCanvas.SetActive(true);
-                    playerJoinCanvas.SetActive(false);
-                    creditsCanvas.SetActive(false);
+                    GoToHowToPlay();
                 }
                 if (Input.GetButtonDown("Cancel"))
                 {
-                    Delay();
-                    state = MenuState.MAIN;
-
-                    mainCanvas.SetActive(true);
-                    howToPlayCanvas.SetActive(false);
-                    playerJoinCanvas.SetActive(false);
-                    creditsCanvas.SetActive(false);
+                    GoToMain();
                 }
 
-                if (Input.GetButtonDown("P1_Shoot"))
+                for (int i = 0; i < 4; i++)
                 {
-                    players[0] = true;
-                    playerSlots[0].sprite = playersprites[0];
-                    playerSlots[0].SetNativeSize();
+                    if (Input.GetButtonDown($"P{i + 1}_Shoot"))
+                    {
+                        players[i] = true;
+                        playerSlots[i].sprite = playersprites[i];
+                        playerSlots[i].SetNativeSize();
+                    }
+                    if (Input.GetButtonDown($"P{i + 1}_Sacrifice"))
+                    {
+                        players[i] = false;
+                        playerSlots[i].sprite = emptySlot;
+                        playerSlots[i].SetNativeSize();
+                    }
                 }
-                if (Input.GetButtonDown("P2_Shoot"))
-                {
-                    players[1] = true;
-                    playerSlots[1].sprite = playersprites[1];
-                    playerSlots[1].SetNativeSize();
-                }
-                if (Input.GetButtonDown("P3_Shoot"))
-                {
-                    players[2] = true;
-                    playerSlots[2].sprite = playersprites[2];
-                    playerSlots[2].SetNativeSize();
-                }
-                if (Input.GetButtonDown("P4_Shoot"))
-                {
-                    players[3] = true;
-                    playerSlots[3].sprite = playersprites[3];
-                    playerSlots[3].SetNativeSize();
-                }
+
                 break;
             case MenuState.CREDITS:
-                if (Input.GetButtonDown("Submit"))
+                if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel"))
                 {
-                    Delay();
-                    state = MenuState.MAIN;
-
-                    mainCanvas.SetActive(true);
-                    howToPlayCanvas.SetActive(false);
-                    playerJoinCanvas.SetActive(false);
-                    creditsCanvas.SetActive(false);
+                    GoToMain();
                 }
                 break;
             default:

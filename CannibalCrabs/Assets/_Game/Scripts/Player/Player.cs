@@ -75,7 +75,9 @@ public class Player : MonoBehaviour
             {
                 levelUpEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/crabs_level_final");
             }
+            //FMODUnity.RuntimeManager.PlayOneShot(, DamageEvent, transform.position);
             levelUpEventEmitter.start();
+            levelUpEventEmitter.release();
             if (currentShell != null)
                 disconfortPart.gameObject.SetActive(true);
         }
@@ -86,6 +88,7 @@ public class Player : MonoBehaviour
         }
 
         eatEventEmitter.start();
+        eatEventEmitter.release();
     }
 
     public void Rescale()
@@ -137,6 +140,7 @@ public class Player : MonoBehaviour
     {
         bubblesParticles.SetActive(true);
         enterShellEventEmitter.start();
+        enterShellEventEmitter.release();
     }
 
     public void Shoot()
@@ -182,7 +186,9 @@ public class Player : MonoBehaviour
             //walkEventEmitter.setPitch(0.5f + animator.speed);
 
             if (state == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+            {
                 walkEventEmitter.start();
+            }
 
         }
         else
@@ -247,4 +253,9 @@ public class Player : MonoBehaviour
         this.DelayedAction(duration, () => canTakeDamage = true);
     }
 
+    private void OnDestroy()
+    {
+        walkEventEmitter.release();
+        walkEventEmitter.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
 }

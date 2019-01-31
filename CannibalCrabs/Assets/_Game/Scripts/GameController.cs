@@ -36,6 +36,13 @@ public class GameController : MonoBehaviour
         bgmMusic.start(); //Start your music
     }
 
+    private void OnDestroy()
+    {
+        //bgmMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        FMOD.Studio.Bus playerBus = FMODUnity.RuntimeManager.GetBus("bus:/");
+        playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(0.5f);

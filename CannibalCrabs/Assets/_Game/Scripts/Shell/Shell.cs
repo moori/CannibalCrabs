@@ -70,8 +70,6 @@ public abstract class Shell : MonoBehaviour
         if (owner != null && owner.currentShell)
             owner.currentShell = null;
 
-        Debug.Log("break", gameObject);
-
         crackShellPart.gameObject.SetActive(true);
         crackShellPart.gameObject.transform.SetParent(null);
 
