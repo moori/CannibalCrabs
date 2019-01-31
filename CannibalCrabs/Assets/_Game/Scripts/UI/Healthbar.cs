@@ -16,10 +16,10 @@ public class Healthbar : MonoBehaviour
 
     public void UpdateFillBar(float value)
     {
-        canvasGroup.DOKill();
+        //canvasGroup.DOKill();
         fillImage.DOColor(gradient.Evaluate(value), 0.5f);
-        canvasGroup.DOFade(1, 0.1f);
+        //canvasGroup.DOFade(1, 0.1f);
         fillImage.DOFillAmount(value, 0.5f);
-        canvasGroup.DOFade(0, 0.2f).SetDelay(2f);
+        //canvasGroup.DOFade(0, 0.2f).SetDelay(2f);
     }
 }

@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour
             shell.size = Shell.maxSize;
             shell.sprite.sprite = masterShellSprite;
         }
-        shell.transform.localScale = Vector3.one * Size.sizeScale[shell.size];
+        shell.SetSize(shell.size);
     }
 
     IEnumerator SpawnShells()

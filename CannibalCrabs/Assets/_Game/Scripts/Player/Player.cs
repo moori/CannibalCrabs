@@ -100,6 +100,8 @@ public class Player : MonoBehaviour
         transform.localScale = Vector3.one * Size.sizeScale[size];
         if (initScale < transform.localScale.sqrMagnitude)
             smokePart.Play();
+
+        rb.mass = 2 + (size * 2);
     }
 
     public void SetPlayer(int i)

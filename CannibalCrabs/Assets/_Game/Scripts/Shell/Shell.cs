@@ -45,6 +45,13 @@ public abstract class Shell : MonoBehaviour
         BreakShell();
     }
 
+    public virtual void SetSize(int size)
+    {
+        transform.localScale = Vector3.one * Size.sizeScale[size];
+        rb.mass = 3 + (size * 3);
+        rb.drag = 1 + (size * 2);
+    }
+
     public virtual void TakeDamage(float value)
     {
         if (isFuderosao)
@@ -84,9 +91,7 @@ public abstract class Shell : MonoBehaviour
         player.EnterShell();
         player.currentShell = this;
         owner = player;
-        //player.transform.localScale = Vector3.one * (1 + (size * 0.25f));
-        //player.transform.localScale = player.transform.localScale.normalized * transform.localScale.y;
-        //transform.localScale = player.transform.localScale.normalized;
+        healthbar.canvasGroup.alpha = 1;
         transform.localScale = new Vector3(Mathf.Sign(player.transform.localScale.x), 1, 1);
         OnEnterShell(this, player);
         if (size < 4)
