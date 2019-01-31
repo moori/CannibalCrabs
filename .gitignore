@@ -51,10 +51,7 @@ Assets/StreamingAssets/crashlytics-build.properties
 
 # End of https://www.gitignore.io/api/unity
 
-/CannibalCrabs/Assets/FMODStudioCache.asset
-/CannibalCrabs/Assets/StreamingAssets/*.bank
-/CannibalCrabs/fmod.log
-/CannibalCrabs/fmod_editor.log
-/CannibalCrabs/fmod_editor.log
-
-CannibalCrabs/Assets/FMODStudioCache\.asset
+Assets/FMODStudioCache.asset
+Assets/StreamingAssets/*.bank
+fmod.log
+fmod_editor.log
