@@ -23,7 +23,6 @@ public class RolaThrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("teste");
         if (collision.gameObject.CompareTag("Player"))
         {
             Player player = collision.gameObject.GetComponent<Player>();
@@ -31,11 +30,21 @@ public class RolaThrow : MonoBehaviour
             if (player == thrower || !player.hasShell)
                 return;
 
-            Shell victimShell = player.currentShell;
-            player.currentShell = null;
-            victimShell.EnterShell(thrower);
             inactiveRola.gameObject.SetActive(true);
+            Shell victimShell = player.currentShell;
+
+            player.currentShell.Unequip(player);
+            thrower.currentShell.Unequip(thrower);
+
             inactiveRola.EnterShell(player);
+            victimShell.EnterShell(thrower);
+
+            Debug.Log("kd", player);
+        }
+        else
+        {
+            Debug.Log("oxi", collision);
+            inactiveRola.BreakShell();
         }
         
         Destroy(gameObject);
