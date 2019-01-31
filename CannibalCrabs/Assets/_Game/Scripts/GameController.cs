@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private FMOD.Studio.ParameterInstance bgm_victoty;
 
     public List<Shell> shellPrefabs;
+    public List<GameObject> levelsPrefabs;
     public Player playerPrefab;
     public int maxShells = 6;
     public List<Shell> shellsSpawned;
@@ -29,7 +30,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI winnerText;
     private void Awake()
     {
-
+        Instantiate(levelsPrefabs.GetRandom());
         bgmMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music_gameplay");
         bgmMusic.getParameter("victory", out bgm_victoty); //The first proximidadeEnemigo is the name you gave in your FMOD Project
         bgmMusic.start(); //Start your music

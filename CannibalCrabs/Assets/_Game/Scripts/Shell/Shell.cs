@@ -13,7 +13,7 @@ public abstract class Shell : MonoBehaviour
     protected float timeLastShot;
     public bool canShoot => (Time.time - timeLastShot) >= cooldownDuration;
     protected Rigidbody2D rb;
-    protected Player owner;
+    public Player owner;
     [HideInInspector]
     public SpriteRenderer sprite;
     protected Healthbar healthbar;
@@ -67,8 +67,10 @@ public abstract class Shell : MonoBehaviour
 
     public virtual void BreakShell()
     {
-        if (owner.currentShell)
+        if (owner != null && owner.currentShell)
             owner.currentShell = null;
+
+        Debug.Log("break", gameObject);
 
         crackShellPart.gameObject.SetActive(true);
         crackShellPart.gameObject.transform.SetParent(null);
@@ -103,7 +105,8 @@ public abstract class Shell : MonoBehaviour
         player.currentShell = null;
         owner = null;
         transform.SetParent(null);
-        rb.isKinematic = true;
+        isEquipped = false;
+        rb.isKinematic = false;
         rb.GetComponent<Collider2D>().enabled = true;
     }
 

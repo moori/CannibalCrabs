@@ -11,7 +11,6 @@ public class RolaThrow : MonoBehaviour
     public void Activate(Player thrower, Vector2 initialPosition, Vector2 direction)
     {
         inactiveRola = thrower.currentShell;
-        thrower.currentShell = null;
         inactiveRola.gameObject.SetActive(false);
         this.thrower = thrower;
         transform.position = initialPosition;
@@ -21,9 +20,12 @@ public class RolaThrow : MonoBehaviour
         sprite.transform.up = direction;
     }
 
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             Player player = collision.gameObject.GetComponent<Player>();
 
@@ -37,7 +39,8 @@ public class RolaThrow : MonoBehaviour
             thrower.currentShell.Unequip(thrower);
 
             inactiveRola.EnterShell(player);
-            victimShell.EnterShell(thrower);
+            if (thrower.currentShell == null)
+                victimShell.EnterShell(thrower);
 
             Debug.Log("kd", player);
         }
@@ -46,7 +49,7 @@ public class RolaThrow : MonoBehaviour
             Debug.Log("oxi", collision);
             inactiveRola.BreakShell();
         }
-        
+
         Destroy(gameObject);
     }
 }

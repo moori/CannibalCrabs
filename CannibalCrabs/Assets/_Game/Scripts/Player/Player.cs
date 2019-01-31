@@ -40,17 +40,11 @@ public class Player : MonoBehaviour
     public ParticleSystem disconfortPart;
     public ParticleSystem smokePart;
 
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance deathEventEmitter;
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance eatEventEmitter;
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance levelUpEventEmitter;
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance enterShellEventEmitter;
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance exitShellEventEmitter;
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance walkEventEmitter;
     private string[] walkEvents = new string[] { "event:/SndFx/crabs_slow_4", "event:/SndFx/crabs_slow_3", "event:/SndFx/crabs_slow_2", "event:/SndFx/crabs_slow_1" };
 
