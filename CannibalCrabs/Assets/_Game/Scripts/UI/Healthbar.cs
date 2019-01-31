@@ -7,7 +7,7 @@ public class Healthbar : MonoBehaviour
     public Image fillImage;
     public Gradient gradient;
 
-    private CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
 
     private void Awake()
     {

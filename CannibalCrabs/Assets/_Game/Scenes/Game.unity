@@ -6641,6 +6641,8 @@ MonoBehaviour:
   - {fileID: 1471638314717565501, guid: e4e03723ce706a04d8c459923fa2323f, type: 3}
   - {fileID: 3227880346967064404, guid: 1ddfd3cd1f096f44b8e9abb0643f8804, type: 3}
   - {fileID: 147401018838044027, guid: e4a073d1168d513478f40b37a7fcf2b5, type: 3}
+  - {fileID: 4172993920537108252, guid: 503ed0e67fc86d14da570fea76ab7376, type: 3}
+  - {fileID: 4270020974327676227, guid: 154b1618b0f356241b9ffc72013f84f6, type: 3}
   playerPrefab: {fileID: 8871958293752389847, guid: 98a18253e581f2c4b970cc8c73f9bdd6,
     type: 3}
   maxShells: 6

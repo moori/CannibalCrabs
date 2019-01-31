@@ -19,12 +19,11 @@ public abstract class Shell : MonoBehaviour
     protected Healthbar healthbar;
 
     private bool isEquipped;
+    [FMODUnity.EventRef]
     public string shoot_sfx_event;
 
 
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance shootEventEmitter;
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance crackShellEventEmitter;
 
     public ParticleSystem crackShellPart;
