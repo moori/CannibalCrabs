@@ -3,7 +3,7 @@
 public class SniperShell : Shell
 {
     public Rock rockPrefab;
-    public NinjaBomb ninjaBombPrefab;
+    public Shield shieldPrefab;
 
     public override void Shoot(Vector2 direction)
     {
@@ -19,7 +19,7 @@ public class SniperShell : Shell
     public override void Sacrifice(Vector2 direction)
     {
         base.Sacrifice(direction);
-        NinjaBomb ninjaBomb = Instantiate(ninjaBombPrefab);
-        ninjaBomb.Activate(owner, transform.position);
+        Shield shield = Instantiate(shieldPrefab);
+        shield.Activate(owner);
     }
 }

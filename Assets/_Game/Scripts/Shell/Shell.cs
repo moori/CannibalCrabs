@@ -81,6 +81,7 @@ public abstract class Shell : MonoBehaviour
         if (isEquipped)
             return;
 
+        hp = maxHealth[size];
         isEquipped = true;
         rb.isKinematic = true;
         rb.GetComponent<Collider2D>().enabled = false;

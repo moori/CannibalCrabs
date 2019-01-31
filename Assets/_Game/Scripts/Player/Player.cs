@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public Shell currentShell;
 
     public float speed;
+    public int hp = 1;
     public Color[] colors;
     public List<Sprite> meatSprites;
     public int size => sizeProgression.IndexOf(sizeProgression.First(value => meatsCollected < value));
@@ -216,7 +217,10 @@ public class Player : MonoBehaviour
     {
         if (currentShell == null)
         {
-            Die();
+            if (hp <= 0)
+                Die();
+            else
+                hp--;
         }
         else if (canTakeDamage)
         {
