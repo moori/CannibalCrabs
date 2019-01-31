@@ -94,6 +94,15 @@ public abstract class Shell : MonoBehaviour
             healthbar.UpdateFillBar(hp / maxHealth[size]);
     }
 
+    public void Unequip(Player player)
+    {
+        player.currentShell = null;
+        owner = null;
+        transform.SetParent(null);
+        rb.isKinematic = true;
+        rb.GetComponent<Collider2D>().enabled = true;
+    }
+
     public virtual void Push(Vector2 direction, float force)
     {
         if (owner != null || isFuderosao)
