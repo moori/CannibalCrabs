@@ -56,3 +56,5 @@ Assets/StreamingAssets/crashlytics-build.properties
 /CannibalCrabs/fmod.log
 /CannibalCrabs/fmod_editor.log
 /CannibalCrabs/fmod_editor.log
+
+CannibalCrabs/Assets/FMODStudioCache\.asset
