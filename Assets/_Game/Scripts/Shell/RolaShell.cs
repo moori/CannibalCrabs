@@ -2,7 +2,7 @@
 
 public class RolaShell : Shell
 {
-    //public Spike spikePrefab;
+    public ParticleSystem notesPart;
     public RolaThrow rolaPrefab;
 
     public override void Shoot(Vector2 direction)
@@ -10,9 +10,10 @@ public class RolaShell : Shell
         if (!canShoot)
             return;
 
+        notesPart.Emit(2);
         //Spike spike = Instantiate(spikePrefab);
         //spike.Go(owner, (direction + Random.insideUnitCircle.normalized * 0.3f).normalized);
-        //timeLastShot = Time.time;
+        timeLastShot = Time.time;
         //shootEventEmitter.start();
     }
 

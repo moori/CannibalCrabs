@@ -41,12 +41,10 @@ public class RolaThrow : MonoBehaviour
             inactiveRola.EnterShell(player);
             if (thrower.currentShell == null)
                 victimShell.EnterShell(thrower);
-
-            Debug.Log("kd", player);
         }
         else
         {
-            Debug.Log("oxi", collision);
+            inactiveRola.transform.position = transform.position;
             inactiveRola.BreakShell();
         }
 

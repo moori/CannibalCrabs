@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [HideInInspector]
-    public Color color;
+    public UnityEngine.Color color;
 
     [HideInInspector]
     public Vector2 aimDirection = Vector2.right;
@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
 
     public float speed;
     public int hp = 1;
-    public Color[] colors;
     public List<Sprite> meatSprites;
     public int size => sizeProgression.IndexOf(sizeProgression.First(value => meatsCollected < value));
     public int meatsCollected;
@@ -48,6 +47,19 @@ public class Player : MonoBehaviour
     public FMOD.Studio.EventInstance exitShellEventEmitter;
     public FMOD.Studio.EventInstance walkEventEmitter;
     private string[] walkEvents = new string[] { "event:/SndFx/crabs_slow_4", "event:/SndFx/crabs_slow_3", "event:/SndFx/crabs_slow_2", "event:/SndFx/crabs_slow_1" };
+
+    public static List<Color> colors = new List<Color>() {
+        new Color(239f/255f, 81f/255f, 81f/255f),
+        new Color(255f/255f, 211f/255f, 25f/255f),
+        new Color(129f/255f, 61f/255f, 180f/255f),
+        new Color(253f/255f, 99f/255f, 230f/255f), // pink
+        //new Color(81f/255f, 239f/255f, 227f/255f), // roxo
+        new Color(61f/255f, 255f/255f, 0f/255f),
+        new Color(58f/255f, 61f/255f, 115f/255f),
+        new Color(58f/255f, 61f/255f, 115f/255f),
+        new Color(255f/255f, 255f/255f, 255f/255f),
+        new Color(168f/255f, 168f/255f, 168f/255f)
+    };
 
     private void Awake()
     {
@@ -105,7 +117,7 @@ public class Player : MonoBehaviour
     public void SetPlayer(int i)
     {
         GetComponent<PlayerInput>().playerString = $"P{i + 1}_";
-        color = colors[i];
+        color = Player.colors[TitleController.playerColors[i]];
         colorSprites.ForEach(sprite => sprite.color = color);
     }
 
@@ -134,7 +146,7 @@ public class Player : MonoBehaviour
         this.isVisible = isVisible;
 
         foreach (SpriteRenderer sprite in colorSprites)
-            sprite.color = !isVisible ? Color.clear : color;
+            sprite.color = !isVisible ? UnityEngine.Color.clear : color;
     }
 
     public void EnterShell()
@@ -262,4 +274,5 @@ public class Player : MonoBehaviour
         walkEventEmitter.release();
         walkEventEmitter.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
+
 }

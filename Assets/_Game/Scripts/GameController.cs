@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [FMODUnity.EventRef]
     public FMOD.Studio.EventInstance bgmMusic;
     private FMOD.Studio.ParameterInstance bgm_victoty;
 

@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class TitleController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class TitleController : MonoBehaviour
 
 
     public static bool[] players;
+    public static int[] playerColors;
+    public float[] pTimes;
 
     private bool canClick = true;
 
@@ -45,7 +48,9 @@ public class TitleController : MonoBehaviour
         bgmMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music_menu");
         bgmMusic.start();
 
-        TitleController.players = new bool[4];
+        players = new bool[4];
+        playerColors = new int[] { 0, 1, 2, 3 };
+        pTimes = new float[] { 0, 0, 0, 0 };
 
         GoToMain();
     }
@@ -148,6 +153,16 @@ public class TitleController : MonoBehaviour
                         players[i] = false;
                         playerSlots[i].sprite = emptySlot;
                         playerSlots[i].SetNativeSize();
+                    }
+                    if (Input.GetAxisRaw($"P{i + 1}_Horizontal") != 0)
+                    {
+                        if (Time.time - pTimes[i] > 0.25f && players[i])
+                        {
+                            playerColors[i] = Player.colors.IndexOf(Player.colors.Where(c => !playerColors.Contains(Player.colors.IndexOf(c))).ToList().GetRandom());
+                            //playerColors[i] = UnityEngine.Random.Range(0, Player.colors.Count);
+                            playerSlots[i].color = Player.colors[playerColors[i]];
+                            pTimes[i] = Time.time;
+                        }
                     }
                 }
 
