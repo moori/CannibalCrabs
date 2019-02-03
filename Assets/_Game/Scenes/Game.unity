@@ -534,6 +534,9 @@ MonoBehaviour:
   shellSpawnMask:
     serializedVersion: 2
     m_Bits: 6912
+  puffPart: {fileID: 19800000, guid: 832a0567c7dd6ca4b824f64d0e194df7, type: 3}
+  bubblePart: {fileID: 4825105479047340342, guid: f8267123d39e4e74eb5c8b9a5b1f1b4d,
+    type: 3}
   winnerText: {fileID: 1151607517}
 --- !u!4 &1959767358
 Transform:

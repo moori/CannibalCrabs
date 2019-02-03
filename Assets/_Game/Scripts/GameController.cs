@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour
 
     public ParticleSystem deathPartPrefab;
     public LayerMask shellSpawnMask;
+    public ParticleSystem puffPart;
+    public ParticleSystem bubblePart;
 
     public TextMeshProUGUI winnerText;
     private void Awake()
@@ -77,6 +79,8 @@ public class GameController : MonoBehaviour
                 shellsSpawned.Remove(s);
         };
         shell.transform.position = ShellSpawnPosition();
+        Instantiate(puffPart, shell.transform.position, Quaternion.identity);
+        Instantiate(bubblePart, shell.transform.position, Quaternion.identity);
 
         if (!isFuderosao)
         {
