@@ -185,29 +185,29 @@ public class Player : MonoBehaviour
 
         animator.SetBool("walking", isMoving);
         //animator.speed = isMoving ? 1 : (rb.velocity.magnitude / 12f);
-        animator.SetFloat("speed", (rb.velocity.magnitude / 12f));
+        animator.SetInteger("size", size);
         sandPart.Emit((int)(rb.velocity.magnitude * 0.25f));
         if (h != 0)
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x) * (h > 0 ? -1 : 1), sprite.transform.localScale.y, sprite.transform.localScale.z);
         }
 
-        if (isMoving)
-        {
-            FMOD.Studio.PLAYBACK_STATE state;
-            walkEventEmitter.getPlaybackState(out state);
-            //walkEventEmitter.setPitch(0.5f + animator.speed);
+        //if (isMoving)
+        //{
+        //    FMOD.Studio.PLAYBACK_STATE state;
+        //    walkEventEmitter.getPlaybackState(out state);
+        //    //walkEventEmitter.setPitch(0.5f + animator.speed);
 
-            if (state == FMOD.Studio.PLAYBACK_STATE.STOPPED)
-            {
-                walkEventEmitter.start();
-            }
+        //    if (state == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+        //    {
+        //        walkEventEmitter.start();
+        //    }
 
-        }
-        else
-        {
-            walkEventEmitter.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        }
+        //}
+        //else
+        //{
+        //    walkEventEmitter.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        //}
     }
 
     public void Aim(float h, float v, float aim_h, float aim_v)
@@ -267,6 +267,11 @@ public class Player : MonoBehaviour
     {
         canTakeDamage = false;
         this.DelayedAction(duration, () => canTakeDamage = true);
+    }
+
+    public void OnStepAnimationTouch()
+    {
+        walkEventEmitter.start();
     }
 
     private void OnDestroy()
