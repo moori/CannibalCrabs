@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FMODUnity;
+using UnityEngine;
 
 public class NinjaBomb : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class NinjaBomb : MonoBehaviour
 
     private Player ninjaPlayer;
     public GameObject smokePart;
+    [EventRef]
+    public string smokeEvent;
 
     public void Activate(Player ninjaPlayer, Vector2 position)
     {
@@ -14,6 +17,7 @@ public class NinjaBomb : MonoBehaviour
         this.DelayedAction(duration, () => Destroy(gameObject));
 
         smokePart.transform.SetParent(null);
+        RuntimeManager.PlayOneShot(smokeEvent);
     }
 
     private void Infect(Player player)

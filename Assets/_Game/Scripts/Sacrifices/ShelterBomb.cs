@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FMODUnity;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShelterBomb : MonoBehaviour
@@ -10,6 +11,10 @@ public class ShelterBomb : MonoBehaviour
 
     public GameObject shieldPart;
     public GameObject explosionPart;
+    [EventRef]
+    public string shieldAreaEvent;
+    [EventRef]
+    public string bombEvent;
 
     public void Activate(Player protectedPlayer, Vector2 position)
     {
@@ -18,6 +23,7 @@ public class ShelterBomb : MonoBehaviour
         shieldPart.SetActive(true);
         shieldPart.transform.SetParent(null);
         this.DelayedAction(2, () => Explode());
+        RuntimeManager.PlayOneShot(shieldAreaEvent);
     }
 
     private void Explode()
@@ -28,6 +34,7 @@ public class ShelterBomb : MonoBehaviour
         explosionPart.SetActive(true);
         explosionPart.transform.SetParent(null);
 
+        RuntimeManager.PlayOneShot(bombEvent);
         Destroy(gameObject);
     }
 

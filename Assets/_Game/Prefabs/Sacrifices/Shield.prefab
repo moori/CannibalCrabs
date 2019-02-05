@@ -4892,3 +4892,4 @@ MonoBehaviour:
   duration: 5
   owner: {fileID: 0}
   explosionPart: {fileID: 4508142313141286249}
+  shieldEvent: event:/SndFx/stoner_ult

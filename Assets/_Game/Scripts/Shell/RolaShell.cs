@@ -14,7 +14,7 @@ public class RolaShell : Shell
         //Spike spike = Instantiate(spikePrefab);
         //spike.Go(owner, (direction + Random.insideUnitCircle.normalized * 0.3f).normalized);
         timeLastShot = Time.time;
-        //shootEventEmitter.start();
+        shootEventEmitter.start();
     }
 
     public override void Sacrifice(Vector2 direction)

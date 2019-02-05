@@ -4643,6 +4643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 2
   smokePart: {fileID: 2400410143291028175}
+  smokeEvent: event:/SndFx/flamer_ult
 --- !u!1001 &2398519312529002717
 PrefabInstance:
   m_ObjectHideFlags: 0

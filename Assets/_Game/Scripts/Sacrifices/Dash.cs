@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using FMODUnity;
 
 public class Dash : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class Dash : MonoBehaviour
     public float speed = 5;
 
     private Player dasher;
+
+    [EventRef]
+    public string sacrificeEvent;
 
     public void Activate(Player dasher, Vector2 initialPosition, Vector2 direction)
     {
@@ -17,6 +21,8 @@ public class Dash : MonoBehaviour
         rigidBody.velocity = direction * speed;
         sprite.transform.up = direction;
         transform.localScale = dasher.transform.localScale;
+        RuntimeManager.PlayOneShot(sacrificeEvent, transform.position);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

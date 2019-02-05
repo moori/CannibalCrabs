@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMODUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Shield : MonoBehaviour
     public Player owner;
     public ParticleSystem explosionPart;
     private float startTime;
+    [EventRef]
+    public string shieldEvent;
 
     public void Activate(Player player)
     {
@@ -18,6 +21,7 @@ public class Shield : MonoBehaviour
         transform.SetParent(owner.transform);
         transform.localPosition = Vector3.zero;
         startTime = Time.time;
+        RuntimeManager.PlayOneShot(shieldEvent);
     }
 
     public void Update()

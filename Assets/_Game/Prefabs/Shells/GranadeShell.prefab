@@ -135,6 +135,7 @@ MonoBehaviour:
   hp: 10
   size: 0
   cooldownDuration: 1
+  owner: {fileID: 0}
   sprite: {fileID: 0}
   shoot_sfx_event: event:/SndFx/bomber_basic_fall
   crackShellPart: {fileID: 5381301488403063175}
@@ -142,6 +143,7 @@ MonoBehaviour:
     type: 3}
   shelterBombPrefab: {fileID: 8191829841935420666, guid: 15e32d9d03344604291db4ee2c090ac7,
     type: 3}
+  smokeEvent: event:/SndFx/flamer_ult
 --- !u!50 &1670366780538376892
 Rigidbody2D:
   serializedVersion: 4

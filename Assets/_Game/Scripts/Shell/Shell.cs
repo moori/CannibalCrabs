@@ -37,6 +37,14 @@ public abstract class Shell : MonoBehaviour
         crackShellEventEmitter = FMODUnity.RuntimeManager.CreateInstance("event:/SndFx/shell_crack");
     }
 
+    private void OnDestroy()
+    {
+        shootEventEmitter.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        shootEventEmitter.release();
+        crackShellEventEmitter.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        crackShellEventEmitter.release();
+    }
+
     public abstract void Shoot(Vector2 direction);
 
 
@@ -96,8 +104,8 @@ public abstract class Shell : MonoBehaviour
         OnEnterShell(this, player);
         if (size < 4)
         {
-            healthbar.UpdateFillBar(hp / maxHealth[size]);
             hp = maxHealth[size];
+            healthbar.UpdateFillBar(hp / maxHealth[size]);
         }
     }
 

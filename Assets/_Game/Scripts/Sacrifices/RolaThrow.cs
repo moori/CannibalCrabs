@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FMODUnity;
+using UnityEngine;
 
 public class RolaThrow : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class RolaThrow : MonoBehaviour
 
     private Player thrower;
     private Shell inactiveRola;
+    [EventRef]
+    public string sacrificeEvent;
 
     public void Activate(Player thrower, Vector2 initialPosition, Vector2 direction)
     {
@@ -18,6 +21,7 @@ public class RolaThrow : MonoBehaviour
         SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
         rigidBody.velocity = direction * speed;
         sprite.transform.up = direction;
+        RuntimeManager.PlayOneShot(sacrificeEvent);
     }
 
 
