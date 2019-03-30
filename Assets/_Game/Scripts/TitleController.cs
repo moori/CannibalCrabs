@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System;
-using System.Linq;
 
 public class TitleController : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class TitleController : MonoBehaviour
     public GameObject playerJoinCanvas;
 
     public Image[] playerSlots;
+    public Image[] playerSlotsEmpty;
     public Sprite[] playersprites;
     public Sprite emptySlot;
 
@@ -109,7 +110,7 @@ public class TitleController : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!canClick)
             return;
@@ -145,14 +146,15 @@ public class TitleController : MonoBehaviour
                     if (Input.GetButtonDown($"P{i + 1}_Shoot"))
                     {
                         players[i] = true;
-                        playerSlots[i].sprite = playersprites[i];
-                        playerSlots[i].SetNativeSize();
+                        playerSlots[i].gameObject.SetActive(true);
+                        playerSlots[i].color = Player.colors[playerColors[i]];
+                        playerSlotsEmpty[i].gameObject.SetActive(false);
                     }
                     if (Input.GetButtonDown($"P{i + 1}_Sacrifice"))
                     {
                         players[i] = false;
-                        playerSlots[i].sprite = emptySlot;
-                        playerSlots[i].SetNativeSize();
+                        playerSlots[i].gameObject.SetActive(false);
+                        playerSlotsEmpty[i].gameObject.SetActive(true);
                     }
                     if (Input.GetAxisRaw($"P{i + 1}_Horizontal") != 0)
                     {
