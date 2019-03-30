@@ -48,8 +48,11 @@ public class RolaThrow : MonoBehaviour
         }
         else
         {
-            inactiveRola.transform.position = transform.position;
-            inactiveRola.BreakShell();
+            if (inactiveRola != null)
+            {
+                inactiveRola.transform.position = transform.position;
+                inactiveRola.BreakShell();
+            }
         }
 
         Destroy(gameObject);

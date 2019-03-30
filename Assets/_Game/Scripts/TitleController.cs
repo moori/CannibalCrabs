@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rewired;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -54,6 +55,7 @@ public class TitleController : MonoBehaviour
         pTimes = new float[] { 0, 0, 0, 0 };
 
         GoToMain();
+
     }
 
     public void OnClickPlay()
@@ -120,43 +122,58 @@ public class TitleController : MonoBehaviour
             case MenuState.MAIN:
                 break;
             case MenuState.HOW_TO_PLAY:
-                if (Input.GetButtonDown("Submit"))
+                if (ReInput.players.GetPlayer(0).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(1).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(2).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(3).GetButtonDown("Submit"))
                 {
                     Delay();
                     StartMatch();
                 }
-                if (Input.GetButtonDown("Cancel"))
+                if (ReInput.players.GetPlayer(0).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(1).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(2).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(3).GetButtonDown("Cancel"))
                 {
                     Delay();
                     GoToMain();
                 }
                 break;
             case MenuState.PLAYER_JOIN:
-                if (Input.GetButtonDown("Start"))
+                if (ReInput.players.GetPlayer(0).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(1).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(2).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(3).GetButtonDown("Submit"))
                 {
                     GoToHowToPlay();
                 }
-                if (Input.GetButtonDown("Cancel"))
+                if (ReInput.players.GetPlayer(0).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(1).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(2).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(3).GetButtonDown("Cancel"))
                 {
                     GoToMain();
                 }
 
                 for (int i = 0; i < 4; i++)
                 {
-                    if (Input.GetButtonDown($"P{i + 1}_Shoot"))
+                    //if (Input.GetButtonDown($"P{i + 1}_Shoot"))
+                    if (ReInput.players.GetPlayer(i).GetButtonDown("Shoot"))
                     {
                         players[i] = true;
                         playerSlots[i].gameObject.SetActive(true);
                         playerSlots[i].color = Player.colors[playerColors[i]];
                         playerSlotsEmpty[i].gameObject.SetActive(false);
                     }
-                    if (Input.GetButtonDown($"P{i + 1}_Sacrifice"))
+                    //if (Input.GetButtonDown($"P{i + 1}_Sacrifice"))
+                    if (ReInput.players.GetPlayer(i).GetButtonDown("Sacrifice"))
                     {
                         players[i] = false;
                         playerSlots[i].gameObject.SetActive(false);
                         playerSlotsEmpty[i].gameObject.SetActive(true);
                     }
-                    if (Input.GetAxisRaw($"P{i + 1}_Horizontal") != 0)
+                    //if (Input.GetAxisRaw($"P{i + 1}_Horizontal") != 0)
+                    if (ReInput.players.GetPlayer(i).GetAxis("Move Horizontal") != 0)
                     {
                         if (Time.time - pTimes[i] > 0.25f && players[i])
                         {
@@ -170,7 +187,14 @@ public class TitleController : MonoBehaviour
 
                 break;
             case MenuState.CREDITS:
-                if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel"))
+                if (ReInput.players.GetPlayer(0).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(1).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(2).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(3).GetButtonDown("Submit") ||
+                    ReInput.players.GetPlayer(0).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(1).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(2).GetButtonDown("Cancel") ||
+                    ReInput.players.GetPlayer(3).GetButtonDown("Cancel"))
                 {
                     GoToMain();
                 }

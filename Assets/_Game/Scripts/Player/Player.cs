@@ -55,8 +55,8 @@ public class Player : MonoBehaviour
         new Color(253f/255f, 99f/255f, 230f/255f), // pink
         //new Color(81f/255f, 239f/255f, 227f/255f), // roxo
         new Color(61f/255f, 255f/255f, 0f/255f),
-        new Color(58f/255f, 61f/255f, 115f/255f),
-        new Color(58f/255f, 61f/255f, 115f/255f),
+        //new Color(58f/255f, 61f/255f, 115f/255f),
+        //new Color(58f/255f, 61f/255f, 115f/255f),
         new Color(255f/255f, 255f/255f, 255f/255f),
         new Color(168f/255f, 168f/255f, 168f/255f)
     };
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
 
     public void SetPlayer(int i)
     {
-        GetComponent<PlayerInput>().playerString = $"P{i + 1}_";
+        GetComponent<PlayerInput>().playerIndex = i;
         color = Player.colors[TitleController.playerColors[i]];
         colorSprites.ForEach(sprite => sprite.color = color);
     }
@@ -167,10 +167,12 @@ public class Player : MonoBehaviour
         //}
     }
 
+    float lastTimeSacrifice = 0;
     public void Sacrifice()
     {
-        if (currentShell != null)
+        if (currentShell != null && Time.time - lastTimeSacrifice > 0.8f)
         {
+            lastTimeSacrifice = Time.time;
             currentShell.Sacrifice(aimDirection);
             exitShellEventEmitter.start();
             Rescale();

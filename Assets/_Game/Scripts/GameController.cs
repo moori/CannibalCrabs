@@ -183,6 +183,7 @@ public class GameController : MonoBehaviour
 
         winnerText.gameObject.SetActive(true);
         winnerText.color = winner.color;
+        this.DelayedAction(5, () => SceneManager.LoadScene("Title"));
     }
 
     private void Update()

@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Rewired;
+using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public string playerString;
+    public int playerIndex;
 
     private Player player;
 
@@ -13,11 +14,11 @@ public class PlayerInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float h = Input.GetAxisRaw(playerString + "Horizontal");
-        float v = Input.GetAxisRaw(playerString + "Vertical");
+        float h = ReInput.players.GetPlayer(playerIndex).GetAxis("Move Horizontal");
+        float v = ReInput.players.GetPlayer(playerIndex).GetAxis("Move Vertical");
 
-        float aim_h = Input.GetAxisRaw(playerString + "RightHorizontal");
-        float aim_v = Input.GetAxisRaw(playerString + "RightVertical");
+        float aim_h = ReInput.players.GetPlayer(playerIndex).GetAxis("Aim Horizontal");
+        float aim_v = ReInput.players.GetPlayer(playerIndex).GetAxis("Aim Vertical");
 
         player.Move(h, v);
         player.Aim(h, v, aim_h, aim_v);
@@ -25,9 +26,9 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        bool shoot = Input.GetAxis(playerString + "Shoot") > 0f || Input.GetButtonDown(playerString + "Shoot");
-        bool sacrifice = Input.GetButtonDown(playerString + "Sacrifice");
-        
+        bool shoot = ReInput.players.GetPlayer(playerIndex).GetButton("Shoot");
+        bool sacrifice = ReInput.players.GetPlayer(playerIndex).GetButtonDown("Sacrifice");
+
         if (shoot)
             player.Shoot();
 
